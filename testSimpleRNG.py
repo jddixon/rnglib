@@ -4,11 +4,15 @@
 import os, shutil, time, unittest
 import rnglib
 
+TEST_DIR = 'tmp'
+
 class TestSimpleRNG (unittest.TestCase):
 
     def setUp(self):
         now = time.time()
         self.rng = rnglib.SimpleRNG(now)
+        if not os.path.exists(TEST_DIR):
+            os.makedirs(TEST_DIR)
 
     def tearDown(self):
         pass
@@ -81,14 +85,14 @@ class TestSimpleRNG (unittest.TestCase):
     def testNextDataFile(self):
         for i in range(9):
             fileLen = 16 + self.rng.nextByte()
-            (count, pathToFile) = self.rng.nextDataFile('tmp', 
+            (count, pathToFile) = self.rng.nextDataFile(TEST_DIR, 
                                                         fileLen + 1, fileLen)
             self.assertTrue( os.path.exists( pathToFile ) )
             self.assertEquals( os.path.getsize(pathToFile), count)
 
     def doNextDataDirTest(self, width, depth):
         dirName = self.rng.nextFileName(8)
-        dirPath = "tmp/%s" % dirName
+        dirPath = "%s/%s" % (TEST_DIR, dirName)
         if os.path.exists(dirPath):
             shutil.rmtree(dirPath)
         self.rng.nextDataDir(dirPath, width, depth, 32)

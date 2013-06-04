@@ -4,8 +4,8 @@ import os, random, shutil, string
 from abc import ABCMeta, abstractmethod, abstractproperty;
 
 
-__version__      = '0.6.2'
-__version_date__ = '2012-06-01'
+__version__      = '0.6.3'
+__version_date__ = '2013-06-04'
 
 __all__ = [ \
             # constants, so to speak
@@ -299,7 +299,7 @@ class SimpleRNG(AbstractRNG):
             width = 1;
         if not os.path.exists(pathToDir):
             # XXX SHOULDTRY
-            os.mkdir (pathToDir)
+            os.makedirs (pathToDir)
         subdirSoFar = 0
         for i in range( width ):
             if depth > 1:

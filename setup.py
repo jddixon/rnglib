@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 # rnglib/setup.py
 
 import re
