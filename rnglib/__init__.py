@@ -10,8 +10,8 @@ import os, random, shutil, string
 # will be a no-op.
 # -------------------------------------------------------------------
 
-__version__      = '0.7.0'
-__version_date__ = '2013-06-05'
+__version__      = '0.7.1'
+__version_date__ = '2013-06-06'
 
 __all__ = [ \
             # constants, so to speak
@@ -235,9 +235,8 @@ class CommonFunc(object):
 
 class SimpleRNG(random.Random, CommonFunc):
 
-    def __init__ (self, salt = 0):
-        super(SimpleRNG,self).__init__()    # in first parent, I hope
-        # self.seed(salt)
+    def __init__ (self, salt = None):
+        super(SimpleRNG,self).__init__(salt)    # in first parent, I hope
 
 class SystemRNG(random.SystemRandom, CommonFunc):
     """
@@ -250,6 +249,26 @@ class SystemRNG(random.SystemRandom, CommonFunc):
         super(SystemRNG,self).__init__()    # in first parent, I hope
         # self.seed(salt)
 
+class SecureRandom(random.Random):
+    """
+    Overrides Random.random(), stubs the other 5 functions.
+    """
+
+    def __init__ (self, salt = 0):
+        super(SecureRandom,self).__init__()    # in first parent, I hope
+        # self.seed(salt)
+
+    def random():
+        # XXX STUB: MUST READ /dev/random for some number of bytes
+        pass
+
+    seed     = jumpahead    = _stubbed
+    getstate = setstate     = _notImplemented
+
+class SecureRNG(SecureRandom, CommonFunc):
+    def __init__ (self, salt = 0):
+        super(SecureRNG,self).__init__()    # in first parent, I hope
+        # self.seed(salt)
 
 
 # -------------------------------------------------------------------
