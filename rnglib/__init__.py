@@ -10,8 +10,8 @@ import os, random, shutil, string
 # will be a no-op.
 # -------------------------------------------------------------------
 
-__version__      = '0.7.1'
-__version_date__ = '2013-06-06'
+__version__      = '0.7.2'
+__version_date__ = '2013-06-10'
 
 __all__ = [ \
             # constants, so to speak
@@ -103,17 +103,29 @@ class CommonFunc(object):
             return False
 
     def nextByte(self, max = 256):
+        
         if max < 1:
             max = 1
         elif max > 256:
             max = 256
+
         return int( max * self.random() )
 
+    def _randBytes(self, n):
+        for _ in xrange(n):
+            yield random.getrandbits(8)
+
     def nextBytes(self, bs):
-        """bs is a bytesarray.  Fill it with random bytes."""
+        """bs is a bytearray.  Fill it with random bytes."""
         if bs != None:
-            for i in range(len(bs)):
-                bs[i] = self.nextByte()
+#           for i in range(len(bs)):
+#               bs[i] = self.nextByte()
+            n = len(bs)
+            if n <= 64:
+                val = bytearray(self._randBytes(n))
+            else:
+                val = bytearray(os.urandom(n))
+            bs[:] = val
 
     def nextInt16(self, max = 65536):
         if (max <= 0) or (65536 < max):

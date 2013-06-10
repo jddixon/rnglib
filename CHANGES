@@ -1,0 +1,47 @@
+~/dev/py/rnglib/CHANGES
+
+v0.7.2
+    2013-06-10
+        * modified nextBytes(buffer) to use random.getrandombits    SLOC  406
+            on shorter arrays and os.urandom on longer ones,
+            switching from one to the other at a point experiments
+            suggest is optimal
+v0.7.1
+    2013-06-06
+        * changed SimpleRNG.__init__ to follow random.Random, so 
+            param is (a=None) and __init__ then invokes 
+            random.salt(a), which if a is None uses either
+            urandom() or time.time()
+        * added testRandomFunc.py, which exercises the              SLOC  399
+            random.Random functions available through SimpleRNG
+v0.7.0
+    2013-06-05
+        * dropped AbstractRNG, redefined SimpleRNG so that it 
+            subclasses random.Random, added SystemRNG which 
+            subclasses random.SystemRandom
+v0.6.3
+    2013-06-04
+        * tests create tmp/ if it does not exist
+v0.6.2 
+    2012-06-01
+        * corrected minor fault in SimpleRNG.nextDataFile(): now 
+            confirms that a random file name is not in use before 
+            creating the file
+v0.6.1
+    2012-05-30
+        * removed rnglib.py (which has been merged into 
+            rnglib/__init__.py)
+        * moved dist/myrng* into dist.old.names/
+0.6.0
+    2012-04-24 jdd
+        * renamed package to rnglib 
+
+
+0.5 2011-09-04 jdd replaced MAX_INT16 and such with numeric values
+                     (65536 and such) because compiler didn't like symbols
+
+0.3 2011-08-11 jdd restructured to make rnglib.py a module
+
+0.2 2011-07-12 jdd changed nextFileName() to not produce '.'
+
+0.1 2011-07-11 jdd passes tests
