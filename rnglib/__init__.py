@@ -10,8 +10,8 @@ import os, random, shutil, string
 # will be a no-op.
 # -------------------------------------------------------------------
 
-__version__      = '0.7.2'
-__version_date__ = '2013-06-10'
+__version__      = '0.7.3'
+__version_date__ = '2013-06-16'
 
 __all__ = [ \
             # constants, so to speak
@@ -246,9 +246,9 @@ class CommonFunc(object):
                 (count, pathToLeaf) = self.nextDataFile(pathToDir, maxLen, minLen) 
 
 class SimpleRNG(random.Random, CommonFunc):
-
+    # if salt is None, uses time of day as salt
     def __init__ (self, salt = None):
-        super(SimpleRNG,self).__init__(salt)    # in first parent, I hope
+        super(SimpleRNG,self).__init__(salt)    # in first parent
 
 class SystemRNG(random.SystemRandom, CommonFunc):
     """
@@ -257,7 +257,7 @@ class SystemRNG(random.SystemRandom, CommonFunc):
     not so very slow as an RNG using /dev/random, which will block
     untl enough entropy accumulates.
     """
-    def __init__ (self, salt = 0):
+    def __init__ (self, salt = None):
         super(SystemRNG,self).__init__()    # in first parent, I hope
         # self.seed(salt)
 
@@ -266,8 +266,8 @@ class SecureRandom(random.Random):
     Overrides Random.random(), stubs the other 5 functions.
     """
 
-    def __init__ (self, salt = 0):
-        super(SecureRandom,self).__init__()    # in first parent, I hope
+    def __init__ (self, salt = None):
+        super(SecureRandom,self).__init__()
         # self.seed(salt)
 
     def random():

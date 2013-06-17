@@ -1,5 +1,9 @@
 ~/dev/py/rnglib/CHANGES
 
+v0.7.3
+    2013-06-16
+        * corrected default salt for SimpleRNG etc                  SLOC 406
+
 v0.7.2
     2013-06-10
         * modified nextBytes(buffer) to use random.getrandombits    SLOC  406
