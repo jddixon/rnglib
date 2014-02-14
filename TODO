@@ -1,0 +1,83 @@
+~/dev/py/rnglib/TODO
+
+2013-06-06
+    * make sure that rnglib conforms to random.Random practice.         # DONE
+        - specifically  __init__(self, x=None) should use x 
+            to invoke seed
+        - seed(self, a=None) should simply invoke random.seed(a),
+            which under the hood tries to use _urandom and if 
+            that fails uses time.time
+2013-06-05
+    * tests on 'CommonFunc' functionality should be put in a single
+        file which is invoked by both testSimpleRNG and testSystemRNG
+    * SecureNG needs an intermediate class, say SecureRandom, which
+        overrides random(), replacing it with something that reads
+        /dev/random
+    * THE SALTS ARE WRONG.  I think that random.random() does it 
+        right, defaulting to time.time.  Change salt=0 to salt=None
+        in __init__ parameter lists.
+    * FAILURE SEEN: testSimpleRNG, line 97, tries to delete tmp/U 
+        using rmtree(dirPath), but it's not a directory.  When I ran
+        the test again, it succeeded, although tmp/U was still present
+        and was still a file.  REPEATABLE: I ran the test several times
+        and got the same failure on tmp/o.  Experiments suggest it 
+        occurs every 10-15 runs.  Ran testSystemRNG looking for the 
+        same result, got 2 failures in about 15 runs.
+
+2013-06-04
+    * google on "python random strings" for some interesting chatter
+        - eg stackoverflow 7044044,
+            an-efficient-way-of-making-a-large-random-bytearray
+    * consider dropping DataFile class, which is not being used
+
+2013-06-04
+    SECURE_RNG:
+    * investigate use of LibTom code with Python wrapper
+        - /usr/local/src/libtom/libtomcrypt/src/prngs/fortuna.c 
+        - note fortuna.lo
+        - also requires LTC_SHA256 and AES = LTC_RIJNDAEL
+    * there is a Go implementation, code.google.com/p/crypto-fortuna
+    * SecureRNG methods will be slow and will block if based on /dev/random
+
+    SYSTEM_RNG:
+    * note that random's SystemRandom class already provides numbers
+        from /dev/urandom, the less secure version of /dev/random
+        - bytearray(os.urandom(1000000) also works, and is reasonably
+            fast: 730ms for 10 iterations = 10 MB on PA
+
+    SIMPLE_RNG:
+    * see docs.python.org/2/library/random.html for guidance on         # DONE
+        subclassing random's Random class
+
+2013-06-03
+    * Get rid of ABCMeta unless its use can be clearly justified        # DONE
+    * Rearrange code to define at least two classes using common parent 
+        class.
+        - SimpleRNG is just that, a simple PRNG initially using Python's
+            random module
+        - it would be possible to use /dev/urandom, where available,    # DONE
+            to produce a non-blocking and somewhat less secure 
+            variant
+        - SecureRNG has the same interface but uses /dev/random or a
+            C implementation of fortuna (256 bits?) to produce 
+            cryptographically secure numbers
+
+2012-05-30
+    * Testing is inadequate.  In particular, it is uncertain whether 
+        SimpleRNG has a definite cycle length, whether the same seed 
+        always produces the same sequence of bytes, and whether more 
+        than one instance of the PRNG can be run in the same process 
+        while retaining the basic properies of a Simple RNG.
+        - supposedly uses Mersenne Twister, which has known and long
+            cycle length
+
+2011-09-04 
+    * Various versions of nextInt() did not have a 'max' arg.  Added
+        it but have not tested it.
+
+2011-08-11 
+    * Code is general is fuzzy and confused; purpose of DataFile
+        class is obscure
+
+2011-07-12 
+    * Missing try/except blocks in code; most are identified 
