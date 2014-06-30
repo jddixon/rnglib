@@ -10,8 +10,8 @@ import os, random, shutil, string
 # will be a no-op.
 # -------------------------------------------------------------------
 
-__version__      = '0.7.3'
-__version_date__ = '2013-06-16'
+__version__      = '0.7.4'
+__version_date__ = '2014-06-30'
 
 __all__ = [ \
             # constants, so to speak
@@ -126,6 +126,12 @@ class CommonFunc(object):
             else:
                 val = bytearray(os.urandom(n))
             bs[:] = val
+
+    def someBytes(self, n):
+        """ return a bytearray of N random bytes """
+        b = bytearray(n)
+        self.nextBytes(b)
+        return b
 
     def nextInt16(self, max = 65536):
         if (max <= 0) or (65536 < max):
