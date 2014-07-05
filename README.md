@@ -72,3 +72,7 @@ nextDataFile().
 rnglib was implemented as part of the [XLattice](http://www.xlattice.org) 
 project.  A Go language implementation forms part of 
 [xlattice_go](https://gibhub.com/jddixon/xlattice_go).
+
+## On-line Documentation
+
+More information on the **rnglib** project can be found [here](https://jddixon.github.io/rnglib)
