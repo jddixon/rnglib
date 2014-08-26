@@ -1,10 +1,10 @@
 ~/dev/py/rnglib/TODO
 
 2014-06-30
-    * test someBytes(N) which returns that many random bytest
+    * test someBytes(N) which returns that many random bytest           * DONE
 2014-03-01
-    * need a function like os.urandom(N) which returns the next N
-        (quasi-)random bytes
+    * need a function like os.urandom(N) which returns the next N       * DONE
+        (quasi-)random bytes                                            * DONE
 
 2013-06-06
     * make sure that rnglib conforms to random.Random practice.         # DONE

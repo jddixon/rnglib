@@ -90,6 +90,15 @@ class TestSimpleRNG (unittest.TestCase):
             self.assertTrue( os.path.exists( pathToFile ) )
             self.assertEquals( os.path.getsize(pathToFile), count)
 
+    def testSomeBytes(self):
+        now = time.time()
+        rng = rnglib.SimpleRNG(now)
+        for i in range (8):
+            count = 1 + rng.nextInt16(16)
+            b = rng.someBytes(count)
+            self.assertEquals(len(b), count)
+            self.assertTrue(isinstance(b, bytearray))
+
     def doNextDataDirTest(self, width, depth):
         dirName = self.rng.nextFileName(8)
         dirPath = "%s/%s" % (TEST_DIR, dirName)

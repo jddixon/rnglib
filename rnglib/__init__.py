@@ -10,8 +10,8 @@ import os, random, shutil, string
 # will be a no-op.
 # -------------------------------------------------------------------
 
-__version__      = '0.7.4'
-__version_date__ = '2014-06-30'
+__version__      = '0.7.5'
+__version_date__ = '2014-08-25'
 
 __all__ = [ \
             # constants, so to speak

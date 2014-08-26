@@ -1,6 +1,6 @@
 # see http://docs.python.org/distutils/sourcedist.html
 
-include CHANGES MANIFEST.n README.* TODO
+include countem CHANGES MANIFEST.n README.* TODO
 include *.py
 recursive-include rnglib *.py
 global-exclude junk* .*swp 

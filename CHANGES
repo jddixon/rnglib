@@ -1,12 +1,15 @@
 ~/dev/py/rnglib/CHANGES
 
+v0.7.5
+    2014-08-25
+        * added countem, test of someBytes                          SLOC  427
 v0.7.4
     2014-06-3
         * added someBytes(N) which returns a bytearray of that 
             many random values
 v0.7.3
     2013-06-16
-        * corrected default salt for SimpleRNG etc                  SLOC 406
+        * corrected default salt for SimpleRNG etc                  SLOC  406
 
 v0.7.2
     2013-06-10
