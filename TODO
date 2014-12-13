@@ -1,5 +1,8 @@
 ~/dev/py/rnglib/TODO
 
+2014-12-13
+    * convert library to Python 3                                       * DONE
+
 2014-06-30
     * test someBytes(N) which returns that many random bytest           * DONE
 2014-03-01

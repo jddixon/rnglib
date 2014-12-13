@@ -10,8 +10,8 @@ import os, random, shutil, string
 # will be a no-op.
 # -------------------------------------------------------------------
 
-__version__      = '0.7.5'
-__version_date__ = '2014-08-25'
+__version__      = '1.0.0'
+__version_date__ = '2014-12-13'
 
 __all__ = [ \
             # constants, so to speak
@@ -112,7 +112,7 @@ class CommonFunc(object):
         return int( max * self.random() )
 
     def _randBytes(self, n):
-        for _ in xrange(n):
+        for _ in range(n):
             yield random.getrandbits(8)
 
     def nextBytes(self, bs):
@@ -179,7 +179,7 @@ class CommonFunc(object):
             nameLen = self.nextByte(maxLen)     # so len < 256
         while True:
             name = self._nextFileName(nameLen)
-            if (len(name) > 0) and (string.find(name, "..") == -1):
+            if (len(name) > 0) and (name.find("..") == -1):
                 break
         return name
 
@@ -204,11 +204,9 @@ class CommonFunc(object):
         count = minLen + int(self.random() * (maxLen - minLen))
         data  = bytearray(count)
         self.nextBytes(data)            # fill with random bytes
-        # seems likely to be very expensive
-        s = ''.join( chr(b) for b in data )
         # XXX NEEDS try BLOCK
-        with open(pathToFile, "w") as f:
-            f.write(s)
+        with open(pathToFile, "wb") as f:
+            f.write(data)
             # could check file size with f.tell()
         return (count, pathToFile)
 

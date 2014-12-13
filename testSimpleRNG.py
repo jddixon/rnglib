@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 # testSimpleRNG.py
 import os, shutil, time, unittest
@@ -23,7 +23,7 @@ class TestSimpleRNG (unittest.TestCase):
         data = bytearray(count)
         for i in range(count):
             self.assertTrue (data[i] == 0)
-        self.assertEquals(count, len(data))
+        self.assertEqual(count, len(data))
         return data
 
     # XXX NOT CURRENTLY USED
@@ -45,9 +45,9 @@ class TestSimpleRNG (unittest.TestCase):
         maxInt32 = self.rng.MAX_INT32
         maxInt64 = self.rng.MAX_INT64
 
-        self.assertEquals(65536, maxInt16)
-        self.assertEquals(maxInt16*maxInt16, maxInt32)
-        self.assertEquals(maxInt32*maxInt32, maxInt64)
+        self.assertEqual(65536, maxInt16)
+        self.assertEqual(maxInt16*maxInt16, maxInt32)
+        self.assertEqual(maxInt32*maxInt32, maxInt64)
 
     def testSimplestConstructor(self):
         self.assertFalse( self.rng == None )
@@ -73,7 +73,7 @@ class TestSimpleRNG (unittest.TestCase):
         self.assertTrue( (16 <= length) and (length < 272) )
         data = self._buildData(length)      # builds a byte array
         self.rng.nextBytes(data)
-        self.assertEquals(length, len(data))
+        self.assertEqual(length, len(data))
 
     def testNextFileName(self):
         for n in range(8):
@@ -88,7 +88,7 @@ class TestSimpleRNG (unittest.TestCase):
             (count, pathToFile) = self.rng.nextDataFile(TEST_DIR, 
                                                         fileLen + 1, fileLen)
             self.assertTrue( os.path.exists( pathToFile ) )
-            self.assertEquals( os.path.getsize(pathToFile), count)
+            self.assertEqual( os.path.getsize(pathToFile), count)
 
     def testSomeBytes(self):
         now = time.time()
@@ -96,14 +96,17 @@ class TestSimpleRNG (unittest.TestCase):
         for i in range (8):
             count = 1 + rng.nextInt16(16)
             b = rng.someBytes(count)
-            self.assertEquals(len(b), count)
+            self.assertEqual(len(b), count)
             self.assertTrue(isinstance(b, bytearray))
 
     def doNextDataDirTest(self, width, depth):
         dirName = self.rng.nextFileName(8)
         dirPath = "%s/%s" % (TEST_DIR, dirName)
         if os.path.exists(dirPath):
-            shutil.rmtree(dirPath)
+            if os.path.isfile(dirPath):
+                os.unlink(dirPath)
+            else:
+                shutil.rmtree(dirPath)
         self.rng.nextDataDir(dirPath, width, depth, 32)
 
     def testNextDataDir(self):

@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 # ~/dev/py/rnglib/testRandomFunc.py
 
@@ -13,7 +13,7 @@ from rnglib import SimpleRNG
 # under the same license as Python itself.
 
 def doTest( n, func, args):
-    print "%u invocations of %s" % (n, func.__name__)
+    print("%u invocations of %s" % (n, func.__name__))
     total   = 0.0
     sqsum   = 0.0
     smallest= 1e10
@@ -26,11 +26,11 @@ def doTest( n, func, args):
         smallest= min(x, smallest)
         largest = max(x, largest)
     t1      = time.time()
-    print "  %6.4f sec, " % round(t1-t0, 4), 
+    print("  %6.4f sec, " % round(t1-t0, 4), end=' ') 
     avg     = total/n
     stddev  = math.sqrt(sqsum/n - avg*avg)
-    print 'avg %g, stddev %g, min %g, max %g' % \
-              (avg, stddev, smallest, largest)
+    print('avg %g, stddev %g, min %g, max %g' % \
+              (avg, stddev, smallest, largest))
 
 
 def randTest(n=1000):

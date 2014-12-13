@@ -1,5 +1,8 @@
 ~/dev/py/rnglib/CHANGES
 
+v1.0.0
+    2014-12-13
+        * convert to python3                                        SLOC  424
 v0.7.5
     2014-08-25
         * added countem, test of someBytes                          SLOC  427
