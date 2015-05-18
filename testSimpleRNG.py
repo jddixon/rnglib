@@ -53,7 +53,27 @@ class TestSimpleRNG (unittest.TestCase):
         self.assertFalse( self.rng == None )
 
     def testSeed(self):
-        pass
+        seed = self.rng.nextInt16()
+
+        # if the seed is the same, the numbers generated should be the same
+        rng1 = rnglib.SimpleRNG(seed)
+        rng2 = rnglib.SimpleRNG(seed)
+
+        for i in range(16):
+            a = rng1.nextInt16()
+            b = rng2.nextInt16()
+            self.assertEqual(a, b)
+        
+        # if the seeds differ, with a very high probability the numbers
+        # generated should differ
+        seed1 = (seed << 16) | seed
+        seed2 = ~seed1
+        rng1 = rnglib.SimpleRNG(seed1)
+        rng2 = rnglib.SimpleRNG(seed2)
+        a = rng1.nextInt16()
+        b = rng2.nextInt16()
+        self.assertTrue(a != b)
+        
 
     def testNextBoolean(self):
         value = self.rng.nextBoolean()

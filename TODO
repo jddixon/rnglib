@@ -1,5 +1,17 @@
 ~/dev/py/rnglib/TODO
 
+2015-05-18
+    * verify that two SimpleRNGs with the same seeds generate the       * DONE
+        same sequences                                                  * DONE
+    * and that different seeds (with very high probability) generate    * DONE
+        different numbers                                               * DONE
+
+2015-04-16
+    * consider replacing all bytearray() with bytes()
+        - ah, but the latter are immutable !
+2015-03-23
+    * correct deficiencies in nextDataFile (__init__.py, about 
+        line 217
 2014-12-13
     * convert library to Python 3                                       * DONE
 

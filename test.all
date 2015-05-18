@@ -1,0 +1,4 @@
+./testFiles.py
+./testRandomFunc.py
+./testSimpleRNG.py
+./testSystemRNG.py
