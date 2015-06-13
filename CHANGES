@@ -1,5 +1,8 @@
 ~/dev/py/rnglib/CHANGES
 
+v1.0.2
+    2015-06-13
+        * add installit, update .gitignore                          SLOC  471
 v1.0.1
     2015-05-18
         * verify that two SimpleRNGs with the same seed generate    SLOC  470
@@ -63,3 +66,4 @@ v0.6.1
 0.2 2011-07-12 jdd changed nextFileName() to not produce '.'
 
 0.1 2011-07-11 jdd passes tests
+
