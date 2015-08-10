@@ -1,5 +1,5 @@
 cd /home/jdd/dev/py/rnglib
-rm -rf build
+rm -rf build tmp/*
 pySloc -v \
     txt:.gitignore txt:MANIFEST.in     \
     bash:countem bash:installit        \
