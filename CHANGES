@@ -58,12 +58,19 @@ v0.6.1
         * renamed package to rnglib 
 
 
-0.5 2011-09-04 jdd replaced MAX_INT16 and such with numeric values
+0.5 
+    2011-09-04 
+        * jdd replaced MAX_INT16 and such with numeric values
                      (65536 and such) because compiler didn't like symbols
 
-0.3 2011-08-11 jdd restructured to make rnglib.py a module
+0.3 
+    2011-08-11 
+        * jdd restructured to make rnglib.py a module
 
-0.2 2011-07-12 jdd changed nextFileName() to not produce '.'
-
-0.1 2011-07-11 jdd passes tests
+0.2 
+    2011-07-12 
+        *changed nextFileName() to not produce '.'
+0.1 
+    2011-07-11 
+        * passes tests
 
