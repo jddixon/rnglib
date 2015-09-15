@@ -83,7 +83,7 @@ will be that many files in each directory and subdirectory created
 `rnglib` was implemented as part of the 
 [XLattice](http://www.xlattice.org) 
 project.  A Go language implementation forms part of 
-[xlattice_go.](https://gibhub.com/jddixon/xlattice_go)
+[xlattice_go.](https://github.com/jddixon/xlattice_go)
 
 ## Project Status
 
