@@ -1,5 +1,8 @@
 ~/dev/py/rnglib/CHANGES
 
+v1.0.5
+    2015-11-17
+        * minor edits to *.md                                       SLOC 471
 v1.0.4
     2015-09-12
         * add refs, improve formatting of docs                      SLOC  471
