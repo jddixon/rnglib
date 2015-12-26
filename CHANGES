@@ -1,5 +1,8 @@
 ~/dev/py/rnglib/CHANGES
 
+v1.0.6
+    2015-12-26
+        * fix links, other minor edits
 v1.0.5
     2015-11-17
         * minor edits to *.md                                       SLOC 471
@@ -82,5 +85,6 @@ v0.6.1
 0.1 
     2011-07-11 
         * passes tests
+
 
 
