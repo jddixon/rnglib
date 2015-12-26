@@ -12,7 +12,7 @@ library and so `random`'s functions can be called through any
 of `rnglib`'s three subclasses.
 
 **SimpleRNG** is the fastest of the subclasses.  It uses the
-[Mersenne Twister](https://en.wikipedia.org/wiki-Mersenne_Twister)
+[Mersenne Twister](https://en.wikipedia.org/wiki/Mersenne_Twister)
 and so is completely predictable with a very long period.
 It is suitable where speed and predictability are both important.
 That is, you can be certain that if you provide the same
