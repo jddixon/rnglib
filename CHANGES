@@ -1,11 +1,14 @@
 ~/dev/py/rnglib/CHANGES
 
+v1.0.7
+    2016-01-31
+        * minor edits                                               SLOC  470
 v1.0.6
     2015-12-26
         * fix links, other minor edits
 v1.0.5
     2015-11-17
-        * minor edits to *.md                                       SLOC 471
+        * minor edits to *.md                                       SLOC  471
 v1.0.4
     2015-09-12
         * add refs, improve formatting of docs                      SLOC  471
@@ -85,6 +88,7 @@ v0.6.1
 0.1 
     2011-07-11 
         * passes tests
+
 
 
 

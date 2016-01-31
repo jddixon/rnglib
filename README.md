@@ -93,4 +93,4 @@ Stable, good benchmarks.
 ## On-line Documentation
 
 More information on the **rnglib** project can be found
-[here](https://jddixon.github.io/rnglib).
+[here](https://jddixon.github.io/rnglib)
