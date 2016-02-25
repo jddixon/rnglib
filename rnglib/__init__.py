@@ -10,8 +10,8 @@ import os, random, shutil, string
 # will be a no-op.
 # -------------------------------------------------------------------
 
-__version__      = '1.0.7'
-__version_date__ = '2016-01-31'
+__version__      = '1.0.8'
+__version_date__ = '2016-02-25'
 
 __all__ = [ \
             # constants, so to speak
@@ -330,6 +330,7 @@ class SecureRNG(SecureRandom, CommonFunc):
 #
 #    def nextDataDir(name, depth, width, minLen, maxLen):    pass
 #
+
 
 
 
