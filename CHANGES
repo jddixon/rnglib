@@ -1,5 +1,8 @@
 ~/dev/py/rnglib/CHANGES
 
+v1.0.8
+    2016-02-25
+        * update LICENSE                                            SLOC  470
 v1.0.7
     2016-01-31
         * minor edits                                               SLOC  470
@@ -88,6 +91,7 @@ v0.6.1
 0.1 
     2011-07-11 
         * passes tests
+
 
 
 
