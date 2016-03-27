@@ -1,5 +1,8 @@
 ~/dev/py/rnglib/CHANGES
 
+v1.0.9
+    2016-03-27
+        * add and execute auto8it                                   SLOC  484
 v1.0.8
     2016-02-25
         * update LICENSE                                            SLOC  470
@@ -91,6 +94,7 @@ v0.6.1
 0.1 
     2011-07-11 
         * passes tests
+
 
 
 

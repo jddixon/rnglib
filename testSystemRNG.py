@@ -1,10 +1,14 @@
 #!/usr/bin/python3
 
 # testSystemRNG.py
-import os, shutil, time, unittest
+import os
+import shutil
+import time
+import unittest
 import rnglib
 
 TEST_DIR = 'tmp'
+
 
 class TestSystemRNG (unittest.TestCase):
 
@@ -22,22 +26,21 @@ class TestSystemRNG (unittest.TestCase):
         self.assertTrue(count > 0)
         data = bytearray(count)
         for i in range(count):
-            self.assertTrue (data[i] == 0)
+            self.assertTrue(data[i] == 0)
         self.assertEqual(count, len(data))
         return data
 
     # XXX NOT CURRENTLY USED
     def setABit(self, vector, value):
         """ treat a 32 byte vector as a bit vector of 256 bits """
-        byte = int( value / 8 )
-        bit  = value % 8
+        byte = int(value / 8)
+        bit = value % 8
         vector[byte] |= 1 << bit
         return vector
 
     # XXX NOT CURRENTLY USED
     def nonZeroBits(self, vector):
         pass
-
 
     # actual unit tests #############################################
     def testConstants(self):
@@ -46,31 +49,31 @@ class TestSystemRNG (unittest.TestCase):
         maxInt64 = self.rng.MAX_INT64
 
         self.assertEqual(65536, maxInt16)
-        self.assertEqual(maxInt16*maxInt16, maxInt32)
-        self.assertEqual(maxInt32*maxInt32, maxInt64)
+        self.assertEqual(maxInt16 * maxInt16, maxInt32)
+        self.assertEqual(maxInt32 * maxInt32, maxInt64)
 
     def testSimplestConstructor(self):
-        self.assertFalse( self.rng == None )
+        self.assertFalse(self.rng is None)
 
     def testSeed(self):
         pass
 
     def testNextBoolean(self):
         value = self.rng.nextBoolean()
-        self.assertTrue ( (value == True) or (value == False) )
-        self.assertTrue ( isinstance(value, bool) )
+        self.assertTrue((value == True) or (value == False))
+        self.assertTrue(isinstance(value, bool))
 
     def testNextByte(self):
         value = self.rng.nextByte()
-        byte  = 0
+        byte = 0
 
-        self.assertTrue( (0 <= value) and (value < 256) )
+        self.assertTrue((0 <= value) and (value < 256))
         # would like to test that the entire range is filled
         # where the cost of the test is reasonable
 
     def testNextBytes(self):
         length = 16 + self.rng.nextByte()
-        self.assertTrue( (16 <= length) and (length < 272) )
+        self.assertTrue((16 <= length) and (length < 272))
         data = self._buildData(length)      # builds a byte array
         self.rng.nextBytes(data)
         self.assertEqual(length, len(data))
@@ -78,17 +81,17 @@ class TestSystemRNG (unittest.TestCase):
     def testNextFileName(self):
         for n in range(8):
             maxLen = 16 + n
-            name   = self.rng.nextFileName(maxLen)
-            self.assertTrue ( maxLen > len(name) )
-            self.assertTrue ( 0      < len(name) )
+            name = self.rng.nextFileName(maxLen)
+            self.assertTrue(maxLen > len(name))
+            self.assertTrue(0 < len(name))
 
     def testNextDataFile(self):
         for i in range(9):
             fileLen = 16 + self.rng.nextByte()
-            (count, pathToFile) = self.rng.nextDataFile(TEST_DIR, 
+            (count, pathToFile) = self.rng.nextDataFile(TEST_DIR,
                                                         fileLen + 1, fileLen)
-            self.assertTrue( os.path.exists( pathToFile ) )
-            self.assertEqual( os.path.getsize(pathToFile), count)
+            self.assertTrue(os.path.exists(pathToFile))
+            self.assertEqual(os.path.getsize(pathToFile), count)
 
     def doNextDataDirTest(self, width, depth):
         dirName = self.rng.nextFileName(8)

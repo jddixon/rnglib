@@ -1,7 +1,7 @@
 # see http://docs.python.org/distutils/sourcedist.html
 
 include .gitignorm
-include countem installit
+include auto8it countem installit
 include CHANGES MANIFEST.in README.* TODO
 include *.py
 recursive-include rnglib *.py

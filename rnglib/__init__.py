@@ -1,6 +1,9 @@
 # rnglib/__init__.py
 
-import os, random, shutil, string
+import os
+import random
+import shutil
+import string
 
 
 # -------------------------------------------------------------------
@@ -10,19 +13,19 @@ import os, random, shutil, string
 # will be a no-op.
 # -------------------------------------------------------------------
 
-__version__      = '1.0.8'
-__version_date__ = '2016-02-25'
+__version__      = '1.0.9'
+__version_date__ = '2016-03-27'
 
 __all__ = [ \
-            # constants, so to speak
-            '__version__',      '__version_date__',
-            'MAX_INT16',        'MAX_INT32',        'MAX_INT64',
-            'FILE_NAME_CHARS',  'FILE_NAME_STARTERS',
+    # constants, so to speak
+    '__version__', '__version_date__',
+    'MAX_INT16', 'MAX_INT32', 'MAX_INT64',
+    'FILE_NAME_CHARS', 'FILE_NAME_STARTERS',
 
-            # classes
-            "SimpleRNG",  "SystemRNG",
-#           "SecureRNG",
-          ]
+    # classes
+    "SimpleRNG", "SystemRNG",
+    #           "SecureRNG",
+]
 
 # we pray for constant folding - and we would prefer that these be const
 MAX_INT16 = 65536
@@ -36,10 +39,11 @@ FILE_NAME_STARTERS = \
 
 # -------------------------------------------------------------------
 
+
 class DataFile(object):
     """ this appears to be a stub """
 
-    def __init__(self, name, parent = None):
+    def __init__(self, name, parent=None):
         # XXX integrity checks
         self._name = name
         # XXX integrity checks
@@ -63,7 +67,7 @@ class DataFile(object):
     def equals(self, other):
         if self == other:
             return True
-        if other == None or self.name != other.name:
+        if other is None or self.name != other.name:
             return False
         if self.parent and self.parent != other.parent:
             return False
@@ -72,28 +76,36 @@ class DataFile(object):
 
 # -------------------------------------------------------------------
 
+
 def _stubbed():
     return None
+
+
 def _notImplemented():
     raise NotImplementedError('not implemented, stateless RNG')
 
+
 class CommonFunc(object):
     # XXX remove these ASAP; they are now at the module level
+
     @property
-    def MAX_INT16(self):        return 65536
+    def MAX_INT16(self): return 65536
+
     @property
-    def MAX_INT32(self):        return 65536 * 65536
+    def MAX_INT32(self): return 65536 * 65536
+
     @property
-    def MAX_INT64(self):        return 65536 * 65536 * 65536 * 65536
+    def MAX_INT64(self): return 65536 * 65536 * 65536 * 65536
 
     @property
     def FILE_NAME_CHARS(self):
         return \
-        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-.'
+            'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-.'
+
     @property
     def FILE_NAME_STARTERS(self):
         return \
-        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_'
+            'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_'
     # END remove these ASAP #########################################
 
     def nextBoolean(self):
@@ -102,14 +114,14 @@ class CommonFunc(object):
         else:
             return False
 
-    def nextByte(self, max = 256):
-        
+    def nextByte(self, max=256):
+
         if max < 1:
             max = 1
         elif max > 256:
             max = 256
 
-        return int( max * self.random() )
+        return int(max * self.random())
 
     def _randBytes(self, n):
         for _ in range(n):
@@ -117,9 +129,9 @@ class CommonFunc(object):
 
     def nextBytes(self, bs):
         """bs is a bytearray.  Fill it with random bytes."""
-        if bs != None:
-#           for i in range(len(bs)):
-#               bs[i] = self.nextByte()
+        if bs is not None:
+            #           for i in range(len(bs)):
+            #               bs[i] = self.nextByte()
             n = len(bs)
             if n <= 64:
                 val = bytearray(self._randBytes(n))
@@ -133,21 +145,21 @@ class CommonFunc(object):
         self.nextBytes(b)
         return b
 
-    def nextInt16(self, max = 65536):
+    def nextInt16(self, max=65536):
         if (max <= 0) or (65536 < max):
             max = 65536
-        return int( max * self.random() )
+        return int(max * self.random())
 
-    def nextInt32(self, max = (65536*65536)):
-        if (max <= 0) or ((65536*65536) < max):
-            max = (65536*65536)
-        return int (max * self.random() )
+    def nextInt32(self, max=(65536 * 65536)):
+        if (max <= 0) or ((65536 * 65536) < max):
+            max = (65536 * 65536)
+        return int(max * self.random())
 
-    def nextInt64(self, max = (65536*65536*65536*65536)):
+    def nextInt64(self, max=(65536 * 65536 * 65536 * 65536)):
         """ construed as unsigned 64 bit value """
-        if (max <= 0) or ((65536*65536*65536*65536) < max):
-            max = (65536*65536*65536*65536)
-        return int( max * self.random() )
+        if (max <= 0) or ((65536 * 65536 * 65536 * 65536) < max):
+            max = (65536 * 65536 * 65536 * 65536)
+        return int(max * self.random())
 
     def nextReal(self):
         return self.random()
@@ -162,11 +174,11 @@ class CommonFunc(object):
     def _nextFileName(self, nameLen):
         """ always returns at least one character """
         maxStarterNdx = len(FILE_NAME_STARTERS)
-        ndx  = self.nextByte(maxStarterNdx)
+        ndx = self.nextByte(maxStarterNdx)
         name = FILE_NAME_STARTERS[ndx]
-        maxCharNdx    = len(FILE_NAME_CHARS)
+        maxCharNdx = len(FILE_NAME_CHARS)
         for n in range(nameLen - 1):
-            ndx  = self.nextByte(maxCharNdx)
+            ndx = self.nextByte(maxCharNdx)
             char = FILE_NAME_CHARS[ndx]
             name = name + char
         return name
@@ -189,7 +201,7 @@ class CommonFunc(object):
     # The number of bytes in a file is at least minLen and less than maxLen.
     # Subdirectory names may be random
 
-    def nextDataFile(self, dirName, maxLen, minLen = 0):
+    def nextDataFile(self, dirName, maxLen, minLen=0):
         # silently convert paramaters to reasonable values
         if minLen < 0:
             minLen = 0
@@ -202,7 +214,7 @@ class CommonFunc(object):
             pathToFile = "%s/%s" % (dirName, self.nextFileName(16))
 
         count = minLen + int(self.random() * (maxLen - minLen))
-        data  = bytearray(count)
+        data = bytearray(count)
         self.nextBytes(data)            # fill with random bytes
         # XXX NEEDS try BLOCK
         with open(pathToFile, "wb") as f:
@@ -216,43 +228,48 @@ class CommonFunc(object):
     # DEFICIENCIES:
     # * no control over percentage of directories
     # * no guarantee that depth will be reached
-    def nextDataDir(self, pathToDir, depth, width, maxLen, minLen = 0):
+    def nextDataDir(self, pathToDir, depth, width, maxLen, minLen=0):
         """ creates a directory tree populated with data files """
         # number of directory levels; 1 means no subdirectories
         if depth < 1:
             depth = 1
         # number of members (files, subdirectories) at each level
         if width < 1:
-            width = 1;
+            width = 1
         if not os.path.exists(pathToDir):
             # XXX SHOULDTRY
-            os.makedirs (pathToDir)
+            os.makedirs(pathToDir)
         subdirSoFar = 0
-        for i in range( width ):
+        for i in range(width):
             if depth > 1:
-                if (self.random() > 0.25) and ((i < width - 1) or (subdirSoFar > 0)):
+                if (self.random() > 0.25) and (
+                        (i < width - 1) or (subdirSoFar > 0)):
                     # 25% are subdirs
                     # data file i
                     # SPECIFICATION ERROR: file name may not be unique
                     (count, pathToFile) = self.nextDataFile(pathToDir,
-                                                        maxLen, minLen)
+                                                            maxLen, minLen)
                 else:
                     # directory
                     subdirSoFar += 1
                     # create unique name
-                    fileName   = self.nextFileName(16)
+                    fileName = self.nextFileName(16)
                     pathToSubdir = "%s/%s" % (pathToDir, fileName)
-                    self.nextDataDir(pathToSubdir, depth-1, width,
+                    self.nextDataDir(pathToSubdir, depth - 1, width,
                                      maxLen, minLen)
             else:
                 # data file
                 # SPECIFICATION ERROR: file name may not be unique
-                (count, pathToLeaf) = self.nextDataFile(pathToDir, maxLen, minLen) 
+                (count, pathToLeaf) = self.nextDataFile(
+                    pathToDir, maxLen, minLen)
+
 
 class SimpleRNG(random.Random, CommonFunc):
     # if salt is None, uses time of day as salt
-    def __init__ (self, salt = None):
-        super(SimpleRNG,self).__init__(salt)    # in first parent
+
+    def __init__(self, salt=None):
+        super(SimpleRNG, self).__init__(salt)    # in first parent
+
 
 class SystemRNG(random.SystemRandom, CommonFunc):
     """
@@ -261,34 +278,38 @@ class SystemRNG(random.SystemRandom, CommonFunc):
     not so very slow as an RNG using /dev/random, which will block
     untl enough entropy accumulates.
     """
-    def __init__ (self, salt = None):
-        super(SystemRNG,self).__init__()    # in first parent, I hope
+
+    def __init__(self, salt=None):
+        super(SystemRNG, self).__init__()    # in first parent, I hope
         # self.seed(salt)
+
 
 class SecureRandom(random.Random):
     """
     Overrides Random.random(), stubs the other 5 functions.
     """
 
-    def __init__ (self, salt = None):
-        super(SecureRandom,self).__init__()
+    def __init__(self, salt=None):
+        super(SecureRandom, self).__init__()
         # self.seed(salt)
 
     def random():
         # XXX STUB: MUST READ /dev/random for some number of bytes
         pass
 
-    seed     = jumpahead    = _stubbed
-    getstate = setstate     = _notImplemented
+    seed = jumpahead = _stubbed
+    getstate = setstate = _notImplemented
+
 
 class SecureRNG(SecureRandom, CommonFunc):
-    def __init__ (self, salt = 0):
-        super(SecureRNG,self).__init__()    # in first parent, I hope
+
+    def __init__(self, salt=0):
+        super(SecureRNG, self).__init__()    # in first parent, I hope
         # self.seed(salt)
 
 
 # -------------------------------------------------------------------
-#class SecureRNG(AbstractRNG):
+# class SecureRNG(AbstractRNG):
 #
 #    # XXX THIS IS A STUB XXX
 #
@@ -330,8 +351,4 @@ class SecureRNG(SecureRandom, CommonFunc):
 #
 #    def nextDataDir(name, depth, width, minLen, maxLen):    pass
 #
-
-
-
-
 

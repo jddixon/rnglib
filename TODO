@@ -1,5 +1,8 @@
 ~/dev/py/rnglib/TODO
 
+2016-03-14
+    * nextFileName should have a default length parameter, say 8
+
 2015-05-18
     * verify that two SimpleRNGs with the same seeds generate the       * DONE
         same sequences                                                  * DONE
