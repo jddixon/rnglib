@@ -13,8 +13,8 @@ import string
 # will be a no-op.
 # -------------------------------------------------------------------
 
-__version__      = '1.0.9'
-__version_date__ = '2016-03-27'
+__version__      = '1.0.10'
+__version_date__ = '2016-05-03'
 
 __all__ = [ \
     # constants, so to speak

@@ -1,9 +1,7 @@
-cd /home/jdd/dev/py/rnglib
+#!/usr/bin/env bash
 
-rm -rf build/ tmp/*
+cd $DEV_BASE/py/rnglib
 
-pySloc -v $@                            \
-    txt:.gitignore txt:MANIFEST.in     \
-    bash:auto8it bash:countem bash:installit        \
+rm -rf build/* tmp/* 
 
-
+pySloc  -X dist -v $@
