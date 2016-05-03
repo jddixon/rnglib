@@ -1,5 +1,8 @@
 ~/dev/py/rnglib/CHANGES
 
+v1.0.10
+    2016-05-03
+        * add .dvcz and projCfg*                                    SLOC  526
 v1.0.9
     2016-03-27
         * add and execute auto8it                                   SLOC  484
@@ -94,6 +97,7 @@ v0.6.1
 0.1 
     2011-07-11 
         * passes tests
+
 
 
 
