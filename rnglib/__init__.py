@@ -13,8 +13,8 @@ import string
 # will be a no-op.
 # -------------------------------------------------------------------
 
-__version__      = '1.0.10'
-__version_date__ = '2016-05-03'
+__version__ = '1.0.11'
+__version_date__ = '2016-05-31'
 
 __all__ = [ \
     # constants, so to speak
@@ -351,4 +351,3 @@ class SecureRNG(SecureRandom, CommonFunc):
 #
 #    def nextDataDir(name, depth, width, minLen, maxLen):    pass
 #
-

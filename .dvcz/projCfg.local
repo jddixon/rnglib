@@ -1,13 +1,10 @@
 # rnglib/.dvcz/projCfg.local
 
+dir:pkg:rnglib
+dir:clr:tmp
+
 code:std:.dvcz/projCfg.local
 code:std:.dvcz/projCfg
 code:std:.gitignore
 code:std:MANIFEST.in
 
-bash:std:auto8it
-bash:std:countem
-bash:std:installit
-bash:std:test.all
-
-dir:clr:tmp

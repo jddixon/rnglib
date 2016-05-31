@@ -16,6 +16,6 @@ setup(name='rnglib',
       py_modules=[],
       packages=['rnglib', ],
       # following could be in scripts/ subdir
-      # scripts      = [],          # front end module(s)
+      scripts=[],          # front end module(s)
       # MISSING url
       )
