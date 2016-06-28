@@ -1,5 +1,8 @@
 ~/dev/py/rnglib/CHANGES
 
+v1.0.12
+    2016-06-28
+        * add ghpDoc/{css,img}                                      SLOC 1024
 v1.0.11
     2016-05-31
         * add bkp2U, other bash scripts; update .dvcz               SLOC  565
@@ -100,6 +103,7 @@ v0.6.1
 0.1 
     2011-07-11 
         * passes tests
+
 
 
 
