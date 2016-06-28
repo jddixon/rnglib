@@ -1,0 +1,75 @@
+-----BEGIN RSA PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoM2sBgX0ChP2JriXkOxS
+e2FjHYVzBGkNvgf0vIAa7FFYZi2pWmxBAVXgl3tTiB3quqqud/MbKqdejM6gkKBK
+v8f7hlcBQLD6BLIZ/RRfhIElc+WlDVfKSnBTB4va5qTQAgvuq5i8+oMj7G8WEy5d
+7cYucWyUJMtHvT4pCDtBWeeqQ62tByWjv34Ud/+A9Mjf0leiWxM3tiToVsqIKb4s
+zPjEShF9rvcNa9XEy1dKpcDz9Szbm2SlxOgM83fDDGtOq4SSCSqndtxrOvXXPB57
+H1mJV/FmerbXRPm5ERJVNIxtLk7Gr2Ce45FVlWyJGMhpfVlKkkk+bRQ02OFfazJI
+GQIDAQAB
+-----END RSA PUBLIC KEY-----
+rnglib v1.0.12
+2016-06-28 15:32:26
+# START CONTENT #
+rnglib
+ .copyright 341b426b5d23a84b929e0a59078c58bc76595a70
+ .dvcz
+  projCfg bbb7d2bd12ab09753240150f8e250813982a8dd8
+  projCfg.local 72dbe737933431dbed564f14a047e62f0b88e721
+  version bb1e296952c6240ffb2d4fc59fb02fa961b78b2f
+ .gitignore 5f1a04317952b671c5828218c6efe88c2594f8fb
+ CHANGES 79c39fd91ab11345ae9f2a39a0898da5b6eea612
+ LICENSE.md 0d07d7f09fd91a4c193acd95e1a1afa0c8e4f286
+ MANIFEST.in 812706566cd25235981a7c615bf67b0b2c4779ae
+ README.md 60c585fc2f80443afd8420fd14623fde83238764
+ TODO d0ac73f40a459962ebb220894fe2e178942ff872
+ bkp2U 8385f9f00eebbbfeec6cefee07e891d44754d212
+ countem 1450a4428c79c4930c637f2157f16199b786f665
+ dist
+  rnglib-0.6.3.tar.gz fc10937cf0b2161e943620158c14599a55b046bb
+  rnglib-0.7.0.tar.gz 79e365bcad5e588d10bf9b8cef8f4955ae437b4e
+  rnglib-0.7.1.tar.gz d6fbb6029deb62d21225de56b689f1c21e5f767a
+  rnglib-0.7.2.tar.gz c45af8a9c6465f13c8ee2afe064f1f0b661849b4
+  rnglib-0.7.3.tar.gz fac3357104d0891039536791a9a1b32a8c670a58
+  rnglib-0.7.5.tar.gz fbfe2c4c737a910963458b2d717bba289af5ba59
+  rnglib-1.0.0.tar.gz 2640bcda78788d260f0e9d8c05eccf181c9708ee
+  rnglib-1.0.1.tar.gz 17beff0d234d61d34df711a7276fd57f299f2ee1
+  rnglib-1.0.10.tar.gz 72b26f30c8ed61deb98df25863dc1ba6c428291a
+  rnglib-1.0.11.tar.gz d6729b18b87598a9c424a35fc9de9952d6d06074
+  rnglib-1.0.12.tar.gz 79ad583ececfae6c9bc9754142c347c97dd477f8
+  rnglib-1.0.2.tar.gz 585121ef59084361340376a0a54d83464e57d693
+  rnglib-1.0.3.tar.gz e340b5ec74b41cca7388e6dd8016d3ddb275f34e
+  rnglib-1.0.4.tar.gz a7ac37e4abc1194403b066a0edb71c217949bbcd
+  rnglib-1.0.5.tar.gz e4fa28f0835061ae86cda6e181c2e78d3d8c8293
+  rnglib-1.0.7.tar.gz 7760abd63be97f8dedb5eba255a92c236176029f
+  rnglib-1.0.8.tar.gz 6d12491e355f6d2a1aab86f9d8ca82531682a739
+  rnglib-1.0.9.tar.gz bf430a81c27cbe4878d38b9fdfe921082d045606
+ ghpDoc
+  TODO e6d71e578dc93b7ad1281c6149b30782dfb83ae3
+  css
+   LICENSE.html5-boilerplate.md ded771b3245b190da0e81c76de5a80d41392c0a6
+   ghp.css 1d6ebe8a6cf8f61f4645a793cb087dfae2420f33
+   main.css 018ed80b8a6e6607bc7c08595fa5a7fa56853885
+   normalize.css cba40c7ce3d558d00ff79d7505ac3d348015ec9c
+  img
+   GitHub-Mark-32px.png fabe53eb72f9b6d3d47cd95aff31ffc45c2fdbf8
+   chunk.jpg de2b27e41f1547fc14b13399f5906b4303b49657
+   chunk2.jpg d0593d312dbb8ea837c17b28cb639726e29ea93b
+   cluster-with-clients.jpg c167d04c0c6b5736ef9fe4cdc3fcce1956fdea78
+   simple-cluster.jpg 6b223ddd25937c1ef75ef328f36fc3436f10bd62
+   xl-registration.jpg 15cbf951f9db173a45428b32dcec87aca83bbdf0
+   xlattice-2014.jpg f185aaad06db71acd9454f31054c62c56d36f37f
+   xlattice.batik.jpg debe9220564203118dc53df0f5a48d77669fe367
+  index.md 93f95dfe01e9b267976f3ce9554bcb5b49f73a8d
+ installit bd1122f5b413a7ce4ba3904dc182a08623b717b2
+ rnglib
+  __init__.py a6235f481f437c860f9ce53fb25797c4e9add34a
+ setup.py 70d56f9dba96a2b0cd97129b375af93f1ce1d492
+ styleit c82a6e7cc1122f830994f082a916852cf3b4e7ae
+ test.all e78650ded77296b91acaa58314845ef020e3bc2a
+ testFiles.py 8420f7d55ac0875b6f64fe4627e3390a95bcb589
+ testRandomFunc.py feb9cd1efebe80eb300d094ffac861aa97496d07
+ testSimpleRNG.py be20f3b048834ee40cff4898857e3d6fe41da819
+ testSystemRNG.py 8efd7e576ea906f5bc2d78be2fcbf72027fddfc1
+# END CONTENT #
+
+PUcfE98q15SIc7CGCADGQPgR3dyjj4WU7AbLGicDYfts5SCWW2qCNoIcxxq6WV53R1XUkzRQPhwNZLQU6+u2jAz1ibh2fPZyr1TTCb0MyUtk5nm+GIH7SEzmVbhCtcSCW1Lq7QRD25u4bIMNGJ2yx30712A7jB32wdQXdPcPVYHI3GPrTIJwRzqLh81BnjyAf0f02OAwc2yqBrmJ5sSi6KBVv0nU2aCWCiTuu85u5ZVgJtVXhxuDq4rLalgI+gvwBjAZgJP9YSZctcZEubHFXHnSbE/ouflbdfpEB3UCFN0j2uAR1bP96ckUZsMeuEzQa1vqwotOjsPCu9ByZU3O1A==
