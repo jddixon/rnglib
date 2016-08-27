@@ -1,5 +1,7 @@
 # rnglib/.dvcz/projCfg.local
 
+txt:std:LICENSE-MIT.md
+
 dir:pkg:rnglib
 dir:clr:tmp
 

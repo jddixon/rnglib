@@ -1,5 +1,9 @@
 ~/dev/py/rnglib/TODO
 
+2016-08-27
+    * fix: had to manually edit countem, adding -X cover
+    * fix: improve coverage results
+
 2016-03-14
     * nextFileName should have a default length parameter, say 8
 

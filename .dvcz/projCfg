@@ -2,13 +2,14 @@
 project:rnglib
 package:rnglib
 mainlang:py
-version:1.0.11
-versionDate:2016-05-31
+version:1.0.12
+versionDate:2016-06-28
 :?dirs?:
 dir:std:ghpDoc
 dir:std:dist
 dir:std:.dvcz
 dir:pkg:rnglib
+dir:local:cover
 dir:clr:build
 dir:clr:tmp
 :?files?:
@@ -23,9 +24,8 @@ code:std:.gitignore
 code:std:.gitignore.local
 code:std:/var/app/sharedev/config/projCfg
 code:std:MANIFEST.in
-txt:std:.copyright
+txt:std:LICENSE-MIT.md
 txt:std:CHANGES
-txt:std:LICENSE.md
 txt:std:README.md
 txt:std:TODO
 bash:std:bkp2U
@@ -38,3 +38,4 @@ py:test:testFiles.py
 py:test:testRandomFunc.py
 py:test:testSimpleRNG.py
 py:test:testSystemRNG.py
+dunno:local:.coverage
