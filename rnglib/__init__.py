@@ -1,20 +1,19 @@
 # rnglib/__init__.py
 
+"""
+See docs.python.org/2/library/random.html for advice on subclassing
+random.Random.  Override random(), seed(), getstate(), setstate(),
+and jumpahead().  For a crypto-grade rng, all but the first of these
+will be a no-op.
+"""
+
 import os
 import random
 import shutil
 import string
 
-
-# -------------------------------------------------------------------
-# see docs.python.org/2/library/random.html for advice on subclassing
-# random.Random.  Override random(), seed(), getstate(), setstate(),
-# and jumpahead().  For a crypto-grade rng, all but the first of these
-# will be a no-op.
-# -------------------------------------------------------------------
-
-__version__ = '1.0.12'
-__version_date__ = '2016-06-28'
+__version__ = '1.0.13'
+__version_date__ = '2016-08-27'
 
 __all__ = [ \
     # constants, so to speak
@@ -265,7 +264,7 @@ class CommonFunc(object):
 
 
 class SimpleRNG(random.Random, CommonFunc):
-    # if salt is None, uses time of day as salt
+    """ if salt is None, uses time of day as salt """
 
     def __init__(self, salt=None):
         super(SimpleRNG, self).__init__(salt)    # in first parent

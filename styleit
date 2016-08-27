@@ -5,6 +5,7 @@ then
   cd $DEV_BASE/py/rnglib
   
   autopep8 -ai -r rnglib *.py
+  echo "not styling cover/ subdir"
   
 else
   echo "DEV_BASE is not defined"

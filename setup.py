@@ -17,9 +17,14 @@ setup(name='rnglib',
       packages=['rnglib', ],
       # following could be in scripts/ subdir
       scripts=[],          # front end module(s)
-      # MISSING description
+      description='random number geerator library',
+      url='https:/jddixon.github.io/rnglib',
       classifiers=[
+          'Development Status :: 4 - Beta',
+          'Intended Audience :: Developers',
           'License :: OSI Approved :: MIT License',
-          'Programming Language :: Python :: 3',
+          'Natural Language :: English',
+          'Programming Language :: Python 3',
+          'Topic :: Software Development :: Libraries :: Python Modules',
       ],
       )
