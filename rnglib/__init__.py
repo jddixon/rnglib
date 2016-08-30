@@ -12,8 +12,8 @@ import random
 import shutil
 import string
 
-__version__ = '1.0.13'
-__version_date__ = '2016-08-27'
+__version__ = '1.0.14'
+__version_date__ = '2016-08-30'
 
 __all__ = [ \
     # constants, so to speak
@@ -22,8 +22,7 @@ __all__ = [ \
     'FILE_NAME_CHARS', 'FILE_NAME_STARTERS',
 
     # classes
-    "SimpleRNG", "SystemRNG",
-    #           "SecureRNG",
+    'SimpleRNG', 'SystemRNG', 'SecureRNG', 'DataFile'
 ]
 
 # we pray for constant folding - and we would prefer that these be const
@@ -38,6 +37,8 @@ FILE_NAME_STARTERS = \
 
 # -------------------------------------------------------------------
 
+
+# XXX USED ONLY IN TESTING XXX
 
 class DataFile(object):
     """ this appears to be a stub """
@@ -63,8 +64,8 @@ class DataFile(object):
     def parent(self):
         return self._parent
 
-    def equals(self, other):
-        if self == other:
+    def __eq__(self, other):
+        if self is other:
             return True
         if other is None or self.name != other.name:
             return False

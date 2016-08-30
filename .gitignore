@@ -4,6 +4,7 @@
 *.swp
 *ZZZ
 .committed
+.coverage
 .dvczignore*
 .merkle
 .posted
@@ -17,5 +18,6 @@ THIS.IS.A.GIT*
 __pycache__
 build
 cover
+htmlcov
 junk*
 tmp

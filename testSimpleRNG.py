@@ -15,8 +15,7 @@ class TestSimpleRNG (unittest.TestCase):
     def setUp(self):
         now = time.time()
         self.rng = rnglib.SimpleRNG(now)
-        if not os.path.exists(TEST_DIR):
-            os.makedirs(TEST_DIR)
+        os.makedirs(TEST_DIR, exist_ok=True, mode=0o755)
 
     def tearDown(self):
         pass
@@ -30,17 +29,17 @@ class TestSimpleRNG (unittest.TestCase):
         self.assertEqual(count, len(data))
         return data
 
-    # XXX NOT CURRENTLY USED
-    def setABit(self, vector, value):
-        """ treat a 32 byte vector as a bit vector of 256 bits """
-        byte = int(value / 8)
-        bit = value % 8
-        vector[byte] |= 1 << bit
-        return vector
+#   # XXX NOT CURRENTLY USED
+#   def setABit(self, vector, value):
+#       """ treat a 32 byte vector as a bit vector of 256 bits """
+#       byte = int(value / 8)
+#       bit = value % 8
+#       vector[byte] |= 1 << bit
+#       return vector
 
-    # XXX NOT CURRENTLY USED
-    def nonZeroBits(self, vector):
-        pass
+#   # XXX NOT CURRENTLY USED
+#   def nonZeroBits(self, vector):
+#       pass
 
     # actual unit tests #############################################
     def testConstants(self):

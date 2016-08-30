@@ -8,7 +8,9 @@ then
     -d ../rnglib \
     -1L  \
     -u $DVCZ_UDIR \
-    -X .ssh -X cover -X coverage \
+    -X cover \
+    -X htmlcov \
+    -X .ssh \
     $@
   
 else

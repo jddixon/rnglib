@@ -1,8 +1,19 @@
 ~/dev/py/rnglib/TODO
 
+2016-08-30
+    * get rid of CommonFunc
+
+2016-08-29
+    * only 17% coverage on testRandomFunc.py; discard current test
+        and rewrite
+        - there are actually no tests in the current version; it 
+            just "exercises random.Random functions through a SimpleRNG 
+            instance and makes the results available for human
+            inspection"
+
 2016-08-27
     * fix: had to manually edit countem, adding -X cover
-    * fix: improve coverage results
+    * fix: improve coverage results                                     * DONE
 
 2016-03-14
     * nextFileName should have a default length parameter, say 8

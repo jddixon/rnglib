@@ -7,28 +7,28 @@ zPjEShF9rvcNa9XEy1dKpcDz9Szbm2SlxOgM83fDDGtOq4SSCSqndtxrOvXXPB57
 H1mJV/FmerbXRPm5ERJVNIxtLk7Gr2Ce45FVlWyJGMhpfVlKkkk+bRQ02OFfazJI
 GQIDAQAB
 -----END RSA PUBLIC KEY-----
-rnglib v1.0.13
-2016-08-27 23:32:33
+rnglib v1.0.14
+2016-08-30 21:58:08
 # BEGIN CONTENT #
 rnglib
- .coverage f9bd51231505ac4f9c55abb45c41d1c92d982e03
  .dvcz
-  builds 3bb4bcaa01e32729749c78992d8311dba6e3def6
+  builds c9e0e57eb91b886e3a9acd9cbb77945655297578
   copyright 341b426b5d23a84b929e0a59078c58bc76595a70
-  lastBuildList d5a70bc227bc9e8dfaf43aee7681b30304641e0c
+  lastBuildList 02e2ee03a530254c921f94572201c9dde78ba5a7
   license 5977a55c75bb4612004451a56b0b4c22d9d3311d
-  projCfg afe2dff967d23ee757c059e71cc5dfe2463f7ca9
-  projCfg.local 087954adebb551f3269bc16c12357fa65d079d3b
-  version 356abdb36064e87bcbed9d41e605f4e0617ced76
- .gitignore 4d552299aa790f456c012edfd54ae37ea9811ad9
- .gitignore.local 8846ee80c4004e0195bca4de511eb997b3ab3d8a
- CHANGES 35a7946dcb548ca61749991c82aada9b71c29f18
+  projCfg b37ec29dca709ffa31c19ed3d0bbb9d4223ddd6f
+  projCfg.local a014706c5299253eaf1c08b311250813adf428be
+  version f1444256dd1b628ef0f5323c40ee958ab34ce854
+ .gitignore 2bc4bcb7826ea9b5fb999444fe18f6785df1de72
+ CHANGES c65e9ad9092d88422902ec3a3fc2537c6777bddc
  LICENSE-MIT.md 0d07d7f09fd91a4c193acd95e1a1afa0c8e4f286
  MANIFEST.in 812706566cd25235981a7c615bf67b0b2c4779ae
  README.md 60c585fc2f80443afd8420fd14623fde83238764
- TODO 4cd3e3a6d3dff30fc9d6a379003c6edf3f1bcd5a
- bkp2U bcbe67ff6d2eae50d5f15e8e6596927051ce4700
- countem 23bce9224738b964f1a6dbf22181cc5e72d09440
+ TODO 5a428926eb5e27ed87940dbcce791f4de70a9c91
+ bkp2U f44de948fc1376d5028ff17be3b8b31b7faf8eee
+ check.summary ba8082b4abcaeaa6d8292ff5e3edffe73b9586a5
+ checkCoverage 2ce4b45fc0358c32554c9fa6f14f55331da784d4
+ countem 613c2b3cfba7cbe5509df235a1817fe36063b30b
  dist
   rnglib-0.6.3.tar.gz fc10937cf0b2161e943620158c14599a55b046bb
   rnglib-0.7.0.tar.gz 79e365bcad5e588d10bf9b8cef8f4955ae437b4e
@@ -41,6 +41,8 @@ rnglib
   rnglib-1.0.10.tar.gz 72b26f30c8ed61deb98df25863dc1ba6c428291a
   rnglib-1.0.11.tar.gz d6729b18b87598a9c424a35fc9de9952d6d06074
   rnglib-1.0.12.tar.gz 79ad583ececfae6c9bc9754142c347c97dd477f8
+  rnglib-1.0.13.tar.gz f5f0995210481d7b77b1f8fa3eb95d63089794a9
+  rnglib-1.0.14.tar.gz 71399f610f722ed2bb8dabaaff725ea60fba7959
   rnglib-1.0.2.tar.gz 585121ef59084361340376a0a54d83464e57d693
   rnglib-1.0.3.tar.gz e340b5ec74b41cca7388e6dd8016d3ddb275f34e
   rnglib-1.0.4.tar.gz a7ac37e4abc1194403b066a0edb71c217949bbcd
@@ -67,14 +69,14 @@ rnglib
   index.md 93f95dfe01e9b267976f3ce9554bcb5b49f73a8d
  installit bd1122f5b413a7ce4ba3904dc182a08623b717b2
  rnglib
-  __init__.py 3aec25c5e4c8bd3e305ddd2e717d5fcba922f131
+  __init__.py c33a38ce36cabd09b9de50bd93dea3ce64bff24f
  setup.py de809be26547956b3a6c2bf6b91449e0d3f18046
- styleit d14a6832cce361f36cc8b321b89a2a021816a6d0
+ styleit c82a6e7cc1122f830994f082a916852cf3b4e7ae
  test.all e78650ded77296b91acaa58314845ef020e3bc2a
- testFiles.py 8420f7d55ac0875b6f64fe4627e3390a95bcb589
- testRandomFunc.py feb9cd1efebe80eb300d094ffac861aa97496d07
- testSimpleRNG.py be20f3b048834ee40cff4898857e3d6fe41da819
- testSystemRNG.py 8efd7e576ea906f5bc2d78be2fcbf72027fddfc1
+ testFiles.py 2df72fa0e0992557837a9ec60acd7b482288bcda
+ testRandomFunc.py e5013e3694b80fa2d6ead7a7e9a97df69d6c1919
+ testSimpleRNG.py 9bae1d70bbba9b62245ee14a2c405570de480149
+ testSystemRNG.py 25409db81384fc59ceb3b92563ae55e41f8e4dd6
 # END CONTENT #
 
-WANK+7V8zUgYwvveAcsa+AQ3KJ056R7FIpGIvmBc92LX+lEK4HdZebzCr+3Y5Dq0R8Yo7lRqWcqZ98mKcNolpSzE9T2DOkWki1kw3gbld0zsw/EErr29aYjWb1MlZwP/N1otqaipgPkxstQmrVQ2rT/EuzpIt63RKHu2OZVgquhxnCoPJdH4OqKEX7U2JwSQsdPu2nhtJ8uQsgnf8W6g0TCtR+67YeItONrnfkbq8akEgWlD+Rv2928NB4ntLU4Xx8ikLRx6hyVQuMPwbhDDjwsbXBiABY7mhNMnAyAd6I+Yw4jVCrAFopX4LJ1VUYu7Nlqwa6mjY2q8lGsV6I85XQ==
+Sk7ThaTCj4xtw8JcmBcUk1VzAKPvV02sIPbW+EjlvjUUFzahDNsDVewabarJAviKIpue0TCWcsEeaS1oAmafzWh02sZchTlXC1Msgg1la95Yd7kogcNSBID/u+yhpjdaIjbDKJ1AiFM8fR03N9KF2TxeN9HyvkJc1iHbMyMUCyPKRkU2SOTdLGFbgyamj8VUeNCZuikXp9ALkJ6v8BqW93NMQ0SII02GxH6HTsik7GcJsG0nRdmOLOCT5nz463PdtCF7amX1hwAynh6MQfLJAADzssp5NfE90A17CEQetRkIA5j0ke7OQm2t3rcivyjCcE/M8TwyBQgtswhU9g8FUw==
