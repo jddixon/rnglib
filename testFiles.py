@@ -26,8 +26,9 @@ class TestDataFile (unittest.TestCase):
         leaf1 = rnglib.DataFile("bar")
         self.assertEqual("bar", leaf1.name)
 
-        self.assertTrue(leaf0.equals(leaf0))
-        self.assertFalse(leaf0.equals(leaf1))
+        self.assertTrue(leaf0.__eq__(leaf0))
+        self.assertEqual(leaf0, leaf0)
+        self.assertFalse(leaf0.__eq__(leaf1))
 
 if __name__ == '__main__':
     unittest.main()

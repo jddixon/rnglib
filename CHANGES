@@ -1,5 +1,8 @@
 ~/dev/py/rnglib/CHANGES
 
+v1.0.14
+    2016-08-30
+        * improve coverage from 79% to 94%                          SLOC 1105
 v1.0.13
     2016-08-27
         * fix setup.py, license                                     SLOC 1132
@@ -106,6 +109,7 @@ v0.6.1
 0.1 
     2011-07-11 
         * passes tests
+
 
 
 
