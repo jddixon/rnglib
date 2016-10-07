@@ -4,10 +4,10 @@ if [ ! -z "${DEV_BASE// }" ]
 then
   cd $DEV_BASE/py/rnglib
   
-  ./testFiles.py
-  ./testRandomFunc.py
-  ./testSimpleRNG.py
-  ./testSystemRNG.py
+  ./test_files.py
+  ./test_random_func.py
+  ./test_simple_rng.py
+  ./test_system_rng.py
   
 else
   echo "DEV_BASE is not defined"

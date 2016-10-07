@@ -4,7 +4,7 @@ if [ ! -z "${DEV_BASE// }" ]
 then
   cd $DEV_BASE/py/rnglib
   
-  rm -rf build/* 
+  rm -rf build/* tmp/* 
   
   pySloc -L py   -X cover -X htmlcov -X dist -v $@
 else

@@ -1,1 +1,11 @@
-nosetests --with-coverage --cover-html --cover-tests test*.py
+# optionz/checkCoverage
+
+# see coverage.readthedocs.io/en/latestt/config.html
+#
+nosetests \
+    --with-coverage --cover-html \
+    --cover-tests \
+    --cover-erase \
+    --cover-branches \
+    --cover-inclusive  \
+    test*.py
