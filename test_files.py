@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
-
 # testDataFile.py
+
+""" Exercise DataFile functionality. """
+
 import unittest
 
 import rnglib
 
 
-class TestDataFile (unittest.TestCase):
+class TestDataFile(unittest.TestCase):
+    """ Exercise DataFile functionality. """
 
     def setUp(self):
         pass
@@ -14,10 +17,9 @@ class TestDataFile (unittest.TestCase):
     def tearDown(self):
         pass
 
-    # utility functions #############################################
+    def test_simplest_constructor(self):
+        """ Verify that the constructor works correctly. """
 
-    # actual unit tests #############################################
-    def testSimplestConstructor(self):
         leaf0 = rnglib.DataFile("foo")
         self.assertEqual("foo", leaf0.name)
         self.assertEqual(None, leaf0.parent)

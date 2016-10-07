@@ -51,10 +51,12 @@ class DataFile(object):
 
     @property
     def name(self):
+        """ Return the name of the data file. """
         return self._name
 
     @property
     def path(self):
+        """ Return a relative or absolute path to the data file. """
         if self._parent:
             return os.path.join(self._parent.path, self._name)
         else:
@@ -62,9 +64,12 @@ class DataFile(object):
 
     @property
     def parent(self):
+        """ Return the name of the data file's parent. """
         return self._parent
 
     def __eq__(self, other):
+        """ Return whether two data files are the same. """
+
         if self is other:
             return True
         if other is None or self.name != other.name:
@@ -78,119 +83,193 @@ class DataFile(object):
 
 
 def _stubbed():
+    """ Unimplemented function. """
     return None
 
 
-def _notImplemented():
+def _not_implemented():
+    """ Raise Noimplemented. """
     raise NotImplementedError('not implemented, stateless RNG')
 
 
 class CommonFunc(object):
-    # XXX remove these ASAP; they are now at the module level
+    """
+    Parent class for RNG classes.
 
-    @property
-    def MAX_INT16(self): return 65536
+    This class contains convenience functions to be added to Random.
+    """
 
-    @property
-    def MAX_INT32(self): return 65536 * 65536
+#   # XXX remove these ASAP; they are now at the module level
 
-    @property
-    def MAX_INT64(self): return 65536 * 65536 * 65536 * 65536
+#   @property
+#   def MAX_INT16(self): return 65536
 
-    @property
-    def FILE_NAME_CHARS(self):
-        return \
-            'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-.'
+#   @property
+#   def MAX_INT32(self): return 65536 * 65536
 
-    @property
-    def FILE_NAME_STARTERS(self):
-        return \
-            'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_'
-    # END remove these ASAP #########################################
+#   @property
+#   def MAX_INT64(self): return 65536 * 65536 * 65536 * 65536
+
+#   @property
+#   def FILE_NAME_CHARS(self):
+#       return \
+#           'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-.'
+
+#   @property
+#   def FILE_NAME_STARTERS(self):
+#       return \
+#           'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_'
+#   # END remove these ASAP #########################################
+
+    # OBSOLETE ------------------------------------------------------
+    # These are renamed per PEP 8.
 
     def nextBoolean(self):
-        if self.random() >= 0.5:
-            return True
-        else:
-            return False
+        """ Return a quasi-random boolean value. """
+        return self.next_boolean()
 
-    def nextByte(self, max=256):
+    def nextByte(self, max_=256):
+        """ Return a quasi-random byte value between 0 and max_ inclusive. """
+        return self.next_byte(max_)
 
-        if max < 1:
-            max = 1
-        elif max > 256:
-            max = 256
-
-        return int(max * self.random())
-
-    def _randBytes(self, n):
-        for _ in range(n):
-            yield random.getrandbits(8)
-
-    def nextBytes(self, bs):
+    def nextBytes(self, bs_):
         """bs is a bytearray.  Fill it with random bytes."""
-        if bs is not None:
-            #           for i in range(len(bs)):
-            #               bs[i] = self.nextByte()
-            n = len(bs)
-            if n <= 64:
-                val = bytearray(self._randBytes(n))
-            else:
-                val = bytearray(os.urandom(n))
-            bs[:] = val
+        return self.next_bytes(bs_)
 
-    def someBytes(self, n):
+    def someBytes(self, count):
         """ return a bytearray of N random bytes """
-        b = bytearray(n)
-        self.nextBytes(b)
-        return b
+        return self.some_bytes(count)
 
-    def nextInt16(self, max=65536):
-        if (max <= 0) or (65536 < max):
-            max = 65536
-        return int(max * self.random())
+    def nextInt16(self, max_=65536):
+        """ Return a quasi-random 16-bit int. """
+        return self.next_int16(max_)
 
-    def nextInt32(self, max=(65536 * 65536)):
-        if (max <= 0) or ((65536 * 65536) < max):
-            max = (65536 * 65536)
-        return int(max * self.random())
+    def nextInt32(self, max_=(65536 * 65536)):
+        """ Return a quasi-random 32-bit int < max_. """
+        return self.next_int32(max_)
 
-    def nextInt64(self, max=(65536 * 65536 * 65536 * 65536)):
-        """ construed as unsigned 64 bit value """
-        if (max <= 0) or ((65536 * 65536 * 65536 * 65536) < max):
-            max = (65536 * 65536 * 65536 * 65536)
-        return int(max * self.random())
+    def nextInt64(self, max_=(65536 * 65536 * 65536 * 65536)):
+        """ Return a quasi-random 64-bit int < max_. """
+        return self.next_int64(max_)
 
     def nextReal(self):
+        """ Return a quasi-random floating-point number. """
+        return self.next_real()
+
+    def nextFileName(self, max_len):
+        """ Return a legal file name with 0 < length < max_len). """
+        return self.next_file_name(max_len)
+
+    def nextDataFile(self, dir_name, max_len, min_len=0):
+        """
+        Return a data file in directory dir_name with a quasi-random name
+        and contents.   The file is at least min_len bytes log and less than
+        max_len bytes long.  Parameters are silently converted to reasonable
+        values if necessary.
+        """
+        return self.next_data_file(dir_name, max_len, min_len)
+
+    def nextDataDir(self, path_to_dir, depth, width, max_len, min_len=0):
+        """ creates a directory tree populated with data files """
+        return self.next_data_dir(path_to_dir, depth, width, max_len, min_len)
+
+    # END OBSOLETE --------------------------------------------------
+
+    def random(self):
+        """ Subclasses must override. """
+        raise NotImplementedError
+
+    def next_boolean(self):
+        """ Return a quasi-random boolean value. """
+
+        return self.random() >= 0.5
+
+    def next_byte(self, max_=256):
+        """ Return a quasi-random byte value between 0 and 255 inclusive. """
+
+        if max_ < 1:
+            max_ = 1
+        elif max_ > 256:
+            max_ = 256
+
+        return int(max_ * self.random())
+
+    def _rand_bytes(self, count):
+        for _ in range(count):
+            yield random.getrandbits(8)
+
+    def next_bytes(self, bs_):
+        """bs_ is a bytearray.  Fill it with random bytes."""
+        if bs_ is not None:
+            #           for i in range(len(bs_)):
+            #               bs_[i] = self.nextByte()
+            lbs = len(bs_)
+            if lbs <= 64:
+                val = bytearray(self._rand_bytes(lbs))
+            else:
+                val = bytearray(os.urandom(lbs))
+            bs_[:] = val
+
+    def some_bytes(self, count):
+        """ return a bytearray of N random bytes """
+        buffer = bytearray(count)
+        self.next_bytes(buffer)
+        return buffer
+
+    def next_int16(self, max_=65536):
+        """ Return a quasi-random 16-bit int < max_. """
+
+        if (max_ <= 0) or (max_ > 65536):
+            max_ = 65536
+        return int(max_ * self.random())
+
+    def next_int32(self, max_=(65536 * 65536)):
+        """ Return a quasi-random 32-bit int < max_. """
+        if (max_ <= 0) or ((65536 * 65536) < max_):
+            max_ = (65536 * 65536)
+        return int(max_ * self.random())
+
+    def next_int64(self, max_=(65536 * 65536 * 65536 * 65536)):
+        """ Return a quasi-random 64-bit int < max_. """
+
+        if (max_ <= 0) or ((65536 * 65536 * 65536 * 65536) < max_):
+            max_ = (65536 * 65536 * 65536 * 65536)
+        return int(max_ * self.random())
+
+    def next_real(self):
+        """ Return a quasi-random floating-point number. """
+
         return self.random()
 
     # ---------------------------------------------------------------
 
     # These produce strings which are acceptable POSIX file names
     # and also advance a cursor by a multiple of 64 bits.  All strings
-    # are at least one byte and less than maxLen bytes n length.  We
+    # are at least one byte and less than max_Len bytes n length.  We
     # arbitrarily limit file names to less than 256 characters.
 
-    def _nextFileName(self, nameLen):
-        """ always returns at least one character """
-        maxStarterNdx = len(FILE_NAME_STARTERS)
-        ndx = self.nextByte(maxStarterNdx)
+    def _next_file_name(self, name_len):
+        """ Always returns at least one character. """
+
+        max_starter_ndx = len(FILE_NAME_STARTERS)
+        ndx = self.nextByte(max_starter_ndx)
         name = FILE_NAME_STARTERS[ndx]
-        maxCharNdx = len(FILE_NAME_CHARS)
-        for n in range(nameLen - 1):
-            ndx = self.nextByte(maxCharNdx)
+        max_char_ndx = len(FILE_NAME_CHARS)
+        for _ in range(name_len - 1):
+            ndx = self.nextByte(max_char_ndx)
             char = FILE_NAME_CHARS[ndx]
             name = name + char
         return name
 
-    def nextFileName(self, maxLen):
-        if maxLen < 2:
-            maxLen = 2      # this is a ceiling which cannot be reached
-        nameLen = 0
-        while nameLen == 0:
-            nameLen = self.nextByte(maxLen)     # so len < 256
+    def next_file_name(self, max_len):
+        """ Return a legal file name with 0 < length < max_len). """
+        if max_len < 2:
+            max_len = 2      # this is a ceiling which cannot be reached
+        name_len = 0
+        while name_len == 0:
+            name_len = self.nextByte(max_len)     # so len < 256
         while True:
-            name = self._nextFileName(nameLen)
+            name = self._next_file_name(name_len)
             if (len(name) > 0) and (name.find("..") == -1):
                 break
         return name
@@ -198,29 +277,35 @@ class CommonFunc(object):
     # These are operations on the file system.  Directory depth is at least 1
     # and no more than 'depth'.  Likewise for width, the number of
     # files in a directory, where a file is either a data file or a subdirectory.
-    # The number of bytes in a file is at least minLen and less than maxLen.
+    # The number of bytes in a file is at least min_len and less than max_len.
     # Subdirectory names may be random
 
-    def nextDataFile(self, dirName, maxLen, minLen=0):
-        # silently convert paramaters to reasonable values
-        if minLen < 0:
-            minLen = 0
-        if maxLen < minLen + 1:
-            maxLen = minLen + 1
+    def next_data_file(self, dir_name, max_len, min_len=0):
+        """
+        Return a data file in directory dir_name with a quasi-random name
+        and contents.   The file is at least min_len bytes log and less than
+        max_len bytes long.  Parameters are silently converted to reasonable
+        values if necessary.
+        """
 
-        # loop until the file does not exist
-        pathToFile = "%s/%s" % (dirName, self.nextFileName(16))
-        while os.path.exists(pathToFile):
-            pathToFile = "%s/%s" % (dirName, self.nextFileName(16))
+        if min_len < 0:
+            min_len = 0
+        if max_len < min_len + 1:
+            max_len = min_len + 1
 
-        count = minLen + int(self.random() * (maxLen - minLen))
-        data = bytearray(count)
-        self.nextBytes(data)            # fill with random bytes
+        # loop until name does not match existing file
+        path_to_file = "%s/%s" % (dir_name, self.next_file_name(16))
+        while os.path.exists(path_to_file):
+            path_to_file = "%s/%s" % (dir_name, self.next_file_name(16))
+
+        count = min_len + int(self.random() * (max_len - min_len))
+        data = self.some_bytes(count)
+
         # XXX NEEDS try BLOCK
-        with open(pathToFile, "wb") as f:
-            f.write(data)
-            # could check file size with f.tell()
-        return (count, pathToFile)
+        with open(path_to_file, "wb") as file:
+            file.write(data)
+            # could check file size with file.tell()
+        return (count, path_to_file)
 
     # BUGS
     # * on at least one occasion with width = 4 only 3 files/directories
@@ -228,7 +313,7 @@ class CommonFunc(object):
     # DEFICIENCIES:
     # * no control over percentage of directories
     # * no guarantee that depth will be reached
-    def nextDataDir(self, pathToDir, depth, width, maxLen, minLen=0):
+    def next_data_dir(self, path_to_dir, depth, width, max_len, min_len=0):
         """ creates a directory tree populated with data files """
         # number of directory levels; 1 means no subdirectories
         if depth < 1:
@@ -236,39 +321,39 @@ class CommonFunc(object):
         # number of members (files, subdirectories) at each level
         if width < 1:
             width = 1
-        if not os.path.exists(pathToDir):
+        if not os.path.exists(path_to_dir):
             # XXX SHOULDTRY
-            os.makedirs(pathToDir)
-        subdirSoFar = 0
+            os.makedirs(path_to_dir)
+        subdir_so_far = 0
         for i in range(width):
             if depth > 1:
                 if (self.random() > 0.25) and (
-                        (i < width - 1) or (subdirSoFar > 0)):
+                        (i < width - 1) or (subdir_so_far > 0)):
                     # 25% are subdirs
                     # data file i
                     # SPECIFICATION ERROR: file name may not be unique
-                    (count, pathToFile) = self.nextDataFile(pathToDir,
-                                                            maxLen, minLen)
+                    (_, path_to_file) = self.next_data_file(
+                        path_to_dir, max_len, min_len)
                 else:
                     # directory
-                    subdirSoFar += 1
+                    subdir_so_far += 1
                     # create unique name
-                    fileName = self.nextFileName(16)
-                    pathToSubdir = "%s/%s" % (pathToDir, fileName)
-                    self.nextDataDir(pathToSubdir, depth - 1, width,
-                                     maxLen, minLen)
+                    file_name = self.nextFileName(16)
+                    path_to_subdir = "%s/%s" % (path_to_dir, file_name)
+                    self.next_data_dir(path_to_subdir, depth - 1, width,
+                                       max_len, min_len)
             else:
                 # data file
                 # SPECIFICATION ERROR: file name may not be unique
-                (count, pathToLeaf) = self.nextDataFile(
-                    pathToDir, maxLen, minLen)
+                (_, path_to_leaf) = self.next_data_file(
+                    path_to_dir, max_len, min_len)
 
 
 class SimpleRNG(random.Random, CommonFunc):
     """ if salt is None, uses time of day as salt """
 
     def __init__(self, salt=None):
-        super(SimpleRNG, self).__init__(salt)    # in first parent
+        super().__init__(salt)    # in first parent
 
 
 class SystemRNG(random.SystemRandom, CommonFunc):
@@ -280,7 +365,7 @@ class SystemRNG(random.SystemRandom, CommonFunc):
     """
 
     def __init__(self, salt=None):
-        super(SystemRNG, self).__init__()    # in first parent, I hope
+        super().__init__()    # in first parent, I hope
         # self.seed(salt)
 
 
@@ -290,23 +375,25 @@ class SecureRandom(random.Random):
     """
 
     def __init__(self, salt=None):
-        super(SecureRandom, self).__init__()
+        super().__init__()
         # self.seed(salt)
 
-    def random():
+    def random(self):
         # XXX STUB: MUST READ /dev/random for some number of bytes
         pass
 
-    seed = jumpahead = _stubbed
-    getstate = setstate = _notImplemented
+    seed = _stubbed
+    jumpahead = _stubbed
+
+    getstate = _not_implemented
+    setstate = _not_implemented
 
 
 class SecureRNG(SecureRandom, CommonFunc):
 
     def __init__(self, salt=0):
-        super(SecureRNG, self).__init__()    # in first parent, I hope
+        super().__init__()    # in first parent, I hope
         # self.seed(salt)
-
 
 # -------------------------------------------------------------------
 # class SecureRNG(AbstractRNG):
@@ -339,15 +426,15 @@ class SecureRNG(SecureRandom, CommonFunc):
 #    # These produce strings which are acceptable POSIX file names
 #    # All strings are at least one byte in length.
 #
-#    def nextName(maxLen):                                   pass
+#    def nextName(max_Len):                                   pass
 #
 #    # These are operations on the file system.  Directory depth is at least 1
 #    # and no more than 'depth'.  Likewise for width, the number of
 #    # files in a directory, where a file is either a data file or a subdirectory.
-#    # The number of bytes in a file is at least minLen and may not exceed maxLen.
+#    # The number of bytes in a file is at least minLen and may not exceed max_Len.
 #    # Subdirectory names may be random
 #
-#    def nextDataFile(name, minLen, maxLen):                 pass
+#    def nextDataFile(name, minLen, max_Len):                 pass
 #
-#    def nextDataDir(name, depth, width, minLen, maxLen):    pass
+#    def nextDataDir(name, depth, width, minLen, max_Len):    pass
 #
