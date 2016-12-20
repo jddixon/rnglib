@@ -9,17 +9,21 @@ will be a no-op.
 
 import os
 import random
+import re
 import shutil
 import string
 
-__version__ = '1.0.14'
-__version_date__ = '2016-08-30'
+__version__ = '1.1.1'
+__version_date__ = '2016-12-20'
 
 __all__ = [ \
     # constants, so to speak
     '__version__', '__version_date__',
     'MAX_INT16', 'MAX_INT32', 'MAX_INT64',
     'FILE_NAME_CHARS', 'FILE_NAME_STARTERS',
+
+    # functions
+    'valid_file_name'
 
     # classes
     'SimpleRNG', 'SystemRNG', 'SecureRNG', 'DataFile'
@@ -35,10 +39,18 @@ FILE_NAME_CHARS =  \
 FILE_NAME_STARTERS = \
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_'
 
+VALID_FILE_NAME_PAT = \
+    r'^[' + FILE_NAME_STARTERS + '](?:' + FILE_NAME_CHARS + ')*'
+VALID_FILE_NAME_RE = re.compile(VALID_FILE_NAME_PAT)
+
+
+def valid_file_name(string):
+    m = VALID_FILE_NAME_RE.match(string)
+    return m is not None
+
 # -------------------------------------------------------------------
-
-
 # XXX USED ONLY IN TESTING XXX
+
 
 class DataFile(object):
     """ this appears to be a stub """
@@ -77,7 +89,7 @@ class DataFile(object):
         if self.parent and self.parent != other.parent:
             return False
         # XXX STUB - no content??
-        return True                                         # GEEP
+        return True
 
 # -------------------------------------------------------------------
 
@@ -98,28 +110,6 @@ class CommonFunc(object):
 
     This class contains convenience functions to be added to Random.
     """
-
-#   # XXX remove these ASAP; they are now at the module level
-
-#   @property
-#   def MAX_INT16(self): return 65536
-
-#   @property
-#   def MAX_INT32(self): return 65536 * 65536
-
-#   @property
-#   def MAX_INT64(self): return 65536 * 65536 * 65536 * 65536
-
-#   @property
-#   def FILE_NAME_CHARS(self):
-#       return \
-#           'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-.'
-
-#   @property
-#   def FILE_NAME_STARTERS(self):
-#       return \
-#           'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_'
-#   # END remove these ASAP #########################################
 
     # OBSOLETE ------------------------------------------------------
     # These are renamed per PEP 8.
@@ -395,46 +385,4 @@ class SecureRNG(SecureRandom, CommonFunc):
         super().__init__()    # in first parent, I hope
         # self.seed(salt)
 
-# -------------------------------------------------------------------
-# class SecureRNG(AbstractRNG):
-#
 #    # XXX THIS IS A STUB XXX
-#
-#    # XXX RECOPY FROM SimpleRNG
-#
-#    def seed(salt):                                         pass
-#
-#    # each of these operations is expected to advance a cursor by an integer
-#    # multiple of 64 bits, 8 bytes
-#
-#
-#    def nextBoolean():                                      pass
-#
-#    def nextByte():                                         pass
-#
-#    def nextBytes(len):                                     pass
-#
-#    def nextInt16():                                        pass
-#
-#    def nextInt32():                                        pass
-#
-#    def nextInt64():                                        pass
-#    # construed as 64 bit value
-#
-#    def nextReal():                                         pass
-#
-#    # These produce strings which are acceptable POSIX file names
-#    # All strings are at least one byte in length.
-#
-#    def nextName(max_Len):                                   pass
-#
-#    # These are operations on the file system.  Directory depth is at least 1
-#    # and no more than 'depth'.  Likewise for width, the number of
-#    # files in a directory, where a file is either a data file or a subdirectory.
-#    # The number of bytes in a file is at least minLen and may not exceed max_Len.
-#    # Subdirectory names may be random
-#
-#    def nextDataFile(name, minLen, max_Len):                 pass
-#
-#    def nextDataDir(name, depth, width, minLen, max_Len):    pass
-#

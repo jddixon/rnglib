@@ -1,5 +1,13 @@
 ~/dev/py/rnglib/CHANGES
 
+v1.1.1
+    2016-12-20
+        * add valid_file_name()                                     SLOC 1388
+v1.1.0
+    2016-10-08
+        * minor cleanup                                             SLOC 1354
+    2016-10-06
+        * add pylint; refactor (forgot to step version nbr)         SLOC 1351
 v1.0.14
     2016-08-30
         * improve coverage from 79% to 94%                          SLOC 1105
@@ -109,6 +117,8 @@ v0.6.1
 0.1 
     2011-07-11 
         * passes tests
+
+
 
 
 
