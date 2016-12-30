@@ -9,17 +9,21 @@ will be a no-op.
 
 import os
 import random
+import re
 import shutil
-import string
+#import string
 
-__version__ = '1.0.14'
-__version_date__ = '2016-08-30'
+__version__ = '1.1.2'
+__version_date__ = '2016-12-29'
 
 __all__ = [ \
     # constants, so to speak
     '__version__', '__version_date__',
     'MAX_INT16', 'MAX_INT32', 'MAX_INT64',
     'FILE_NAME_CHARS', 'FILE_NAME_STARTERS',
+
+    # functions
+    'valid_file_name',
 
     # classes
     'SimpleRNG', 'SystemRNG', 'SecureRNG', 'DataFile'
@@ -35,10 +39,19 @@ FILE_NAME_CHARS =  \
 FILE_NAME_STARTERS = \
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_'
 
+VALID_FILE_NAME_PAT = \
+    r'^[' + FILE_NAME_STARTERS + '](?:' + FILE_NAME_CHARS + ')*'
+VALID_FILE_NAME_RE = re.compile(VALID_FILE_NAME_PAT)
+
+
+def valid_file_name(name):
+    """ Return whether the name matches the regular expression. """
+    match = VALID_FILE_NAME_RE.match(name)
+    return match is not None
+
 # -------------------------------------------------------------------
-
-
 # XXX USED ONLY IN TESTING XXX
+
 
 class DataFile(object):
     """ this appears to be a stub """
@@ -77,7 +90,7 @@ class DataFile(object):
         if self.parent and self.parent != other.parent:
             return False
         # XXX STUB - no content??
-        return True                                         # GEEP
+        return True
 
 # -------------------------------------------------------------------
 
@@ -87,39 +100,12 @@ def _stubbed():
     return None
 
 
-def _not_implemented():
-    """ Raise Noimplemented. """
-    raise NotImplementedError('not implemented, stateless RNG')
-
-
 class CommonFunc(object):
     """
     Parent class for RNG classes.
 
     This class contains convenience functions to be added to Random.
     """
-
-#   # XXX remove these ASAP; they are now at the module level
-
-#   @property
-#   def MAX_INT16(self): return 65536
-
-#   @property
-#   def MAX_INT32(self): return 65536 * 65536
-
-#   @property
-#   def MAX_INT64(self): return 65536 * 65536 * 65536 * 65536
-
-#   @property
-#   def FILE_NAME_CHARS(self):
-#       return \
-#           'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-.'
-
-#   @property
-#   def FILE_NAME_STARTERS(self):
-#       return \
-#           'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_'
-#   # END remove these ASAP #########################################
 
     # OBSOLETE ------------------------------------------------------
     # These are renamed per PEP 8.
@@ -314,7 +300,7 @@ class CommonFunc(object):
     # * no control over percentage of directories
     # * no guarantee that depth will be reached
     def next_data_dir(self, path_to_dir, depth, width, max_len, min_len=0):
-        """ creates a directory tree populated with data files """
+        """ Creates a directory tree populated with data files. """
         # number of directory levels; 1 means no subdirectories
         if depth < 1:
             depth = 1
@@ -339,7 +325,7 @@ class CommonFunc(object):
                     subdir_so_far += 1
                     # create unique name
                     file_name = self.nextFileName(16)
-                    path_to_subdir = "%s/%s" % (path_to_dir, file_name)
+                    path_to_subdir = os.path.join(path_to_dir, file_name)
                     self.next_data_dir(path_to_subdir, depth - 1, width,
                                        max_len, min_len)
             else:
@@ -367,6 +353,16 @@ class SystemRNG(random.SystemRandom, CommonFunc):
     def __init__(self, salt=None):
         super().__init__()    # in first parent, I hope
         # self.seed(salt)
+        _ = salt
+
+    def getstate(self):
+        """ Implements abstract function. """
+        raise NotImplementedError('not implemented, stateless RNG')
+
+    def setstate(self, state):
+        """ Implements abstract function. """
+        _ = state
+        raise NotImplementedError('not implemented, stateless RNG')
 
 
 class SecureRandom(random.Random):
@@ -377,6 +373,7 @@ class SecureRandom(random.Random):
     def __init__(self, salt=None):
         super().__init__()
         # self.seed(salt)
+        _ = salt
 
     def random(self):
         # XXX STUB: MUST READ /dev/random for some number of bytes
@@ -385,56 +382,29 @@ class SecureRandom(random.Random):
     seed = _stubbed
     jumpahead = _stubbed
 
-    getstate = _not_implemented
-    setstate = _not_implemented
+    def getstate(self):
+        """ Implements abstract function. """
+        raise NotImplementedError('not implemented, stateless RNG')
+
+    def setstate(self, state):
+        """ Implements abstract function. """
+        _ = state
+        raise NotImplementedError('not implemented, stateless RNG')
+
+    def _notimplemented(self):
+        """ Implements abstract function. """
+        raise NotImplementedError()
 
 
 class SecureRNG(SecureRandom, CommonFunc):
+    """
+    SecureRandom plus the common functions,
+    """
 
     def __init__(self, salt=0):
         super().__init__()    # in first parent, I hope
         # self.seed(salt)
 
-# -------------------------------------------------------------------
-# class SecureRNG(AbstractRNG):
-#
-#    # XXX THIS IS A STUB XXX
-#
-#    # XXX RECOPY FROM SimpleRNG
-#
-#    def seed(salt):                                         pass
-#
-#    # each of these operations is expected to advance a cursor by an integer
-#    # multiple of 64 bits, 8 bytes
-#
-#
-#    def nextBoolean():                                      pass
-#
-#    def nextByte():                                         pass
-#
-#    def nextBytes(len):                                     pass
-#
-#    def nextInt16():                                        pass
-#
-#    def nextInt32():                                        pass
-#
-#    def nextInt64():                                        pass
-#    # construed as 64 bit value
-#
-#    def nextReal():                                         pass
-#
-#    # These produce strings which are acceptable POSIX file names
-#    # All strings are at least one byte in length.
-#
-#    def nextName(max_Len):                                   pass
-#
-#    # These are operations on the file system.  Directory depth is at least 1
-#    # and no more than 'depth'.  Likewise for width, the number of
-#    # files in a directory, where a file is either a data file or a subdirectory.
-#    # The number of bytes in a file is at least minLen and may not exceed max_Len.
-#    # Subdirectory names may be random
-#
-#    def nextDataFile(name, minLen, max_Len):                 pass
-#
-#    def nextDataDir(name, depth, width, minLen, max_Len):    pass
-#
+    def _notimplemented(self):
+        """ Implements abstract function. """
+        raise NotImplementedError()
