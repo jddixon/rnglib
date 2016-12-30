@@ -1,5 +1,9 @@
 ~/dev/py/rnglib/TODO
 
+2016-12-29
+    * need a test of next_data_dir
+    * drop synonyms, step major version number
+
 2016-10-06
     * drop obsolete CommonFunc functions when step minor version 
     * SecureRandom implementation is junk

@@ -11,10 +11,10 @@ import os
 import random
 import re
 import shutil
-import string
+#import string
 
-__version__ = '1.1.1'
-__version_date__ = '2016-12-20'
+__version__ = '1.1.2'
+__version_date__ = '2016-12-29'
 
 __all__ = [ \
     # constants, so to speak
@@ -23,7 +23,7 @@ __all__ = [ \
     'FILE_NAME_CHARS', 'FILE_NAME_STARTERS',
 
     # functions
-    'valid_file_name'
+    'valid_file_name',
 
     # classes
     'SimpleRNG', 'SystemRNG', 'SecureRNG', 'DataFile'
@@ -44,9 +44,10 @@ VALID_FILE_NAME_PAT = \
 VALID_FILE_NAME_RE = re.compile(VALID_FILE_NAME_PAT)
 
 
-def valid_file_name(string):
-    m = VALID_FILE_NAME_RE.match(string)
-    return m is not None
+def valid_file_name(name):
+    """ Return whether the name matches the regular expression. """
+    match = VALID_FILE_NAME_RE.match(name)
+    return match is not None
 
 # -------------------------------------------------------------------
 # XXX USED ONLY IN TESTING XXX
@@ -97,11 +98,6 @@ class DataFile(object):
 def _stubbed():
     """ Unimplemented function. """
     return None
-
-
-def _not_implemented():
-    """ Raise Noimplemented. """
-    raise NotImplementedError('not implemented, stateless RNG')
 
 
 class CommonFunc(object):
@@ -304,7 +300,7 @@ class CommonFunc(object):
     # * no control over percentage of directories
     # * no guarantee that depth will be reached
     def next_data_dir(self, path_to_dir, depth, width, max_len, min_len=0):
-        """ creates a directory tree populated with data files """
+        """ Creates a directory tree populated with data files. """
         # number of directory levels; 1 means no subdirectories
         if depth < 1:
             depth = 1
@@ -329,7 +325,7 @@ class CommonFunc(object):
                     subdir_so_far += 1
                     # create unique name
                     file_name = self.nextFileName(16)
-                    path_to_subdir = "%s/%s" % (path_to_dir, file_name)
+                    path_to_subdir = os.path.join(path_to_dir, file_name)
                     self.next_data_dir(path_to_subdir, depth - 1, width,
                                        max_len, min_len)
             else:
@@ -357,6 +353,16 @@ class SystemRNG(random.SystemRandom, CommonFunc):
     def __init__(self, salt=None):
         super().__init__()    # in first parent, I hope
         # self.seed(salt)
+        _ = salt
+
+    def getstate(self):
+        """ Implements abstract function. """
+        raise NotImplementedError('not implemented, stateless RNG')
+
+    def setstate(self, state):
+        """ Implements abstract function. """
+        _ = state
+        raise NotImplementedError('not implemented, stateless RNG')
 
 
 class SecureRandom(random.Random):
@@ -367,6 +373,7 @@ class SecureRandom(random.Random):
     def __init__(self, salt=None):
         super().__init__()
         # self.seed(salt)
+        _ = salt
 
     def random(self):
         # XXX STUB: MUST READ /dev/random for some number of bytes
@@ -375,14 +382,29 @@ class SecureRandom(random.Random):
     seed = _stubbed
     jumpahead = _stubbed
 
-    getstate = _not_implemented
-    setstate = _not_implemented
+    def getstate(self):
+        """ Implements abstract function. """
+        raise NotImplementedError('not implemented, stateless RNG')
+
+    def setstate(self, state):
+        """ Implements abstract function. """
+        _ = state
+        raise NotImplementedError('not implemented, stateless RNG')
+
+    def _notimplemented(self):
+        """ Implements abstract function. """
+        raise NotImplementedError()
 
 
 class SecureRNG(SecureRandom, CommonFunc):
+    """
+    SecureRandom plus the common functions,
+    """
 
     def __init__(self, salt=0):
         super().__init__()    # in first parent, I hope
         # self.seed(salt)
 
-#    # XXX THIS IS A STUB XXX
+    def _notimplemented(self):
+        """ Implements abstract function. """
+        raise NotImplementedError()
