@@ -13,8 +13,8 @@ import re
 import shutil
 #import string
 
-__version__ = '1.1.2'
-__version_date__ = '2016-12-29'
+__version__ = '1.1.3'
+__version_date__ = '2017-01-03'
 
 __all__ = [ \
     # constants, so to speak
@@ -35,12 +35,12 @@ MAX_INT32 = 65536 * 65536
 MAX_INT64 = 65536 * 65536 * 65536 * 65536
 
 FILE_NAME_CHARS =  \
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-.'
+    r'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_\-\.'
 FILE_NAME_STARTERS = \
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_'
+    r'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_'
 
 VALID_FILE_NAME_PAT = \
-    r'^[' + FILE_NAME_STARTERS + '](?:' + FILE_NAME_CHARS + ')*'
+    r'^[' + FILE_NAME_STARTERS + '][' + FILE_NAME_CHARS + ']*$'
 VALID_FILE_NAME_RE = re.compile(VALID_FILE_NAME_PAT)
 
 

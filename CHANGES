@@ -1,5 +1,8 @@
 ~/dev/py/rnglib/CHANGES
 
+v1.1.3
+    2017-01-03
+        * correct errors in valid_file_name; fix tests to catch     SLOC 1185
 v1.1.2
     2016-12-29
         * pylinting, minor bug fixes                                SLOC 1179
@@ -120,6 +123,7 @@ v0.6.1
 0.1 
     2011-07-11 
         * passes tests
+
 
 
 
