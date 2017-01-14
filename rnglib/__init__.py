@@ -11,16 +11,16 @@ import os
 import random
 import re
 import shutil
-#import string
+import warnings
 
-__version__ = '1.1.2'
-__version_date__ = '2016-12-29'
+__version__ = '1.2.0'
+__version_date__ = '2017-01-13'
 
 __all__ = [ \
     # constants, so to speak
     '__version__', '__version_date__',
     'MAX_INT16', 'MAX_INT32', 'MAX_INT64',
-    'FILE_NAME_CHARS', 'FILE_NAME_STARTERS',
+    'FILE_NAME_CHARS', 'FILE_NAME_STARTERS', 'FILE_NAME_OTHER_CHARS',
 
     # functions
     'valid_file_name',
@@ -34,13 +34,18 @@ MAX_INT16 = 65536
 MAX_INT32 = 65536 * 65536
 MAX_INT64 = 65536 * 65536 * 65536 * 65536
 
+# characters we permit in file names, other than the first position
 FILE_NAME_CHARS =  \
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-.'
+    r'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-.'
+
+# patterns used in recognizing valid file names
 FILE_NAME_STARTERS = \
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_'
+    r'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_'
+FILE_NAME_OTHER_CHARS =  \
+    r'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_\-\.'
 
 VALID_FILE_NAME_PAT = \
-    r'^[' + FILE_NAME_STARTERS + '](?:' + FILE_NAME_CHARS + ')*'
+    r'^[' + FILE_NAME_STARTERS + '][' + FILE_NAME_OTHER_CHARS + ']*$'
 VALID_FILE_NAME_RE = re.compile(VALID_FILE_NAME_PAT)
 
 
@@ -107,43 +112,52 @@ class CommonFunc(object):
     This class contains convenience functions to be added to Random.
     """
 
-    # OBSOLETE ------------------------------------------------------
+    # SYNONYM ------------------------------------------------------
     # These are renamed per PEP 8.
 
     def nextBoolean(self):
         """ Return a quasi-random boolean value. """
+        warnings.warn('nextBoolean SYNONYM', DeprecationWarning)
         return self.next_boolean()
 
     def nextByte(self, max_=256):
         """ Return a quasi-random byte value between 0 and max_ inclusive. """
+        warnings.warn('nextByte SYNONYM', DeprecationWarning)
         return self.next_byte(max_)
 
     def nextBytes(self, bs_):
         """bs is a bytearray.  Fill it with random bytes."""
+        warnings.warn('nextBytes SYNONYM', DeprecationWarning)
         return self.next_bytes(bs_)
 
     def someBytes(self, count):
         """ return a bytearray of N random bytes """
+        warnings.warn('someBytes SYNONYM', DeprecationWarning)
         return self.some_bytes(count)
 
     def nextInt16(self, max_=65536):
         """ Return a quasi-random 16-bit int. """
+        warnings.warn('nextInt16 SYNONYM', DeprecationWarning)
         return self.next_int16(max_)
 
     def nextInt32(self, max_=(65536 * 65536)):
         """ Return a quasi-random 32-bit int < max_. """
+        warnings.warn('nextInt32 SYNONYM', DeprecationWarning)
         return self.next_int32(max_)
 
     def nextInt64(self, max_=(65536 * 65536 * 65536 * 65536)):
         """ Return a quasi-random 64-bit int < max_. """
+        warnings.warn('nextInt64 SYNONYM', DeprecationWarning)
         return self.next_int64(max_)
 
     def nextReal(self):
         """ Return a quasi-random floating-point number. """
+        warnings.warn('nextReal SYNONYM', DeprecationWarning)
         return self.next_real()
 
     def nextFileName(self, max_len):
         """ Return a legal file name with 0 < length < max_len). """
+        warnings.warn('nextFileName SYNONYM', DeprecationWarning)
         return self.next_file_name(max_len)
 
     def nextDataFile(self, dir_name, max_len, min_len=0):
@@ -153,13 +167,15 @@ class CommonFunc(object):
         max_len bytes long.  Parameters are silently converted to reasonable
         values if necessary.
         """
+        warnings.warn('nextDataFile SYNONYM', DeprecationWarning)
         return self.next_data_file(dir_name, max_len, min_len)
 
     def nextDataDir(self, path_to_dir, depth, width, max_len, min_len=0):
         """ creates a directory tree populated with data files """
+        warnings.warn('nextDataDir SYNONYM', DeprecationWarning)
         return self.next_data_dir(path_to_dir, depth, width, max_len, min_len)
 
-    # END OBSOLETE --------------------------------------------------
+    # END SYNONYM --------------------------------------------------
 
     def random(self):
         """ Subclasses must override. """
@@ -238,11 +254,11 @@ class CommonFunc(object):
         """ Always returns at least one character. """
 
         max_starter_ndx = len(FILE_NAME_STARTERS)
-        ndx = self.nextByte(max_starter_ndx)
+        ndx = self.next_byte(max_starter_ndx)
         name = FILE_NAME_STARTERS[ndx]
         max_char_ndx = len(FILE_NAME_CHARS)
         for _ in range(name_len - 1):
-            ndx = self.nextByte(max_char_ndx)
+            ndx = self.next_byte(max_char_ndx)
             char = FILE_NAME_CHARS[ndx]
             name = name + char
         return name
@@ -253,7 +269,7 @@ class CommonFunc(object):
             max_len = 2      # this is a ceiling which cannot be reached
         name_len = 0
         while name_len == 0:
-            name_len = self.nextByte(max_len)     # so len < 256
+            name_len = self.next_byte(max_len)     # so len < 256
         while True:
             name = self._next_file_name(name_len)
             if (len(name) > 0) and (name.find("..") == -1):
@@ -324,7 +340,7 @@ class CommonFunc(object):
                     # directory
                     subdir_so_far += 1
                     # create unique name
-                    file_name = self.nextFileName(16)
+                    file_name = self.next_file_name(16)
                     path_to_subdir = os.path.join(path_to_dir, file_name)
                     self.next_data_dir(path_to_subdir, depth - 1, width,
                                        max_len, min_len)

@@ -151,7 +151,7 @@ class TestSimpleRNG(unittest.TestCase):
                 os.unlink(dir_path)
             else:
                 shutil.rmtree(dir_path)
-        self.rng.nextDataDir(dir_path, width, depth, 32)
+        self.rng.next_data_dir(dir_path, width, depth, 32)
 
     def test_next_data_dir(self):
         """ Check the behavior of the next_data_dir() function. """
