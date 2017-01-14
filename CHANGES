@@ -1,5 +1,10 @@
 ~/dev/py/rnglib/CHANGES
 
+v1.2.0
+    2017-01-13
+        * rename nextByte to next_byte throughout
+        * applied PEP 8 to function/method names in README.md
+        * corrected raw sring FILE_NAME_CHARS to exclude backslash  SLOC 1199
 v1.1.3
     2017-01-03
         * correct errors in valid_file_name; fix tests to catch     SLOC 1185
@@ -123,6 +128,7 @@ v0.6.1
 0.1 
     2011-07-11 
         * passes tests
+
 
 
 

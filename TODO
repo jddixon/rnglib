@@ -1,8 +1,10 @@
 ~/dev/py/rnglib/TODO
 
+2017-01-13
+    * DROP SYNONYMS AT v.4.0 (warnings have been added)
+
 2016-12-29
     * need a test of next_data_dir
-    * drop synonyms, step major version number
 
 2016-10-06
     * drop obsolete CommonFunc functions when step minor version 
