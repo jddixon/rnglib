@@ -1,5 +1,8 @@
 ~/dev/py/rnglib/CHANGES
 
+v1.2.1
+    2017-02-19
+        * uncomment deprecated code                                 SLOC 1391
 v1.2.0
     2017-01-13
         * rename nextByte to next_byte throughout
@@ -128,6 +131,7 @@ v0.6.1
 0.1 
     2011-07-11 
         * passes tests
+
 
 
 

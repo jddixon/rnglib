@@ -13,8 +13,8 @@ import re
 import shutil
 import warnings
 
-__version__ = '1.2.0'
-__version_date__ = '2017-01-13'
+__version__ = '1.2.1'
+__version_date__ = '2017-02-19'
 
 __all__ = [ \
     # constants, so to speak
@@ -112,70 +112,70 @@ class CommonFunc(object):
     This class contains convenience functions to be added to Random.
     """
 
-    # SYNONYM ------------------------------------------------------
-    # These are renamed per PEP 8.
-
-    def nextBoolean(self):
-        """ Return a quasi-random boolean value. """
-        warnings.warn('nextBoolean SYNONYM', DeprecationWarning)
-        return self.next_boolean()
-
-    def nextByte(self, max_=256):
-        """ Return a quasi-random byte value between 0 and max_ inclusive. """
-        warnings.warn('nextByte SYNONYM', DeprecationWarning)
-        return self.next_byte(max_)
-
-    def nextBytes(self, bs_):
-        """bs is a bytearray.  Fill it with random bytes."""
-        warnings.warn('nextBytes SYNONYM', DeprecationWarning)
-        return self.next_bytes(bs_)
-
-    def someBytes(self, count):
-        """ return a bytearray of N random bytes """
-        warnings.warn('someBytes SYNONYM', DeprecationWarning)
-        return self.some_bytes(count)
-
-    def nextInt16(self, max_=65536):
-        """ Return a quasi-random 16-bit int. """
-        warnings.warn('nextInt16 SYNONYM', DeprecationWarning)
-        return self.next_int16(max_)
-
-    def nextInt32(self, max_=(65536 * 65536)):
-        """ Return a quasi-random 32-bit int < max_. """
-        warnings.warn('nextInt32 SYNONYM', DeprecationWarning)
-        return self.next_int32(max_)
-
-    def nextInt64(self, max_=(65536 * 65536 * 65536 * 65536)):
-        """ Return a quasi-random 64-bit int < max_. """
-        warnings.warn('nextInt64 SYNONYM', DeprecationWarning)
-        return self.next_int64(max_)
-
-    def nextReal(self):
-        """ Return a quasi-random floating-point number. """
-        warnings.warn('nextReal SYNONYM', DeprecationWarning)
-        return self.next_real()
-
-    def nextFileName(self, max_len):
-        """ Return a legal file name with 0 < length < max_len). """
-        warnings.warn('nextFileName SYNONYM', DeprecationWarning)
-        return self.next_file_name(max_len)
-
-    def nextDataFile(self, dir_name, max_len, min_len=0):
-        """
-        Return a data file in directory dir_name with a quasi-random name
-        and contents.   The file is at least min_len bytes log and less than
-        max_len bytes long.  Parameters are silently converted to reasonable
-        values if necessary.
-        """
-        warnings.warn('nextDataFile SYNONYM', DeprecationWarning)
-        return self.next_data_file(dir_name, max_len, min_len)
-
-    def nextDataDir(self, path_to_dir, depth, width, max_len, min_len=0):
-        """ creates a directory tree populated with data files """
-        warnings.warn('nextDataDir SYNONYM', DeprecationWarning)
-        return self.next_data_dir(path_to_dir, depth, width, max_len, min_len)
-
-    # END SYNONYM --------------------------------------------------
+#    # SYNONYM ------------------------------------------------------
+#    # These are renamed per PEP 8.
+#
+#    def nextBoolean(self):
+#        """ Return a quasi-random boolean value. """
+#        warnings.warn('nextBoolean SYNONYM', DeprecationWarning)
+#        return self.next_boolean()
+#
+#    def nextByte(self, max_=256):
+#        """ Return a quasi-random byte value between 0 and max_ inclusive. """
+#        warnings.warn('nextByte SYNONYM', DeprecationWarning)
+#        return self.next_byte(max_)
+#
+#    def nextBytes(self, bs_):
+#        """bs is a bytearray.  Fill it with random bytes."""
+#        warnings.warn('nextBytes SYNONYM', DeprecationWarning)
+#        return self.next_bytes(bs_)
+#
+#    def someBytes(self, count):
+#        """ return a bytearray of N random bytes """
+#        warnings.warn('someBytes SYNONYM', DeprecationWarning)
+#        return self.some_bytes(count)
+#
+#    def nextInt16(self, max_=65536):
+#        """ Return a quasi-random 16-bit int. """
+#        warnings.warn('nextInt16 SYNONYM', DeprecationWarning)
+#        return self.next_int16(max_)
+#
+#    def nextInt32(self, max_=(65536 * 65536)):
+#        """ Return a quasi-random 32-bit int < max_. """
+#        warnings.warn('nextInt32 SYNONYM', DeprecationWarning)
+#        return self.next_int32(max_)
+#
+#    def nextInt64(self, max_=(65536 * 65536 * 65536 * 65536)):
+#        """ Return a quasi-random 64-bit int < max_. """
+#        warnings.warn('nextInt64 SYNONYM', DeprecationWarning)
+#        return self.next_int64(max_)
+#
+#    def nextReal(self):
+#        """ Return a quasi-random floating-point number. """
+#        warnings.warn('nextReal SYNONYM', DeprecationWarning)
+#        return self.next_real()
+#
+#    def nextFileName(self, max_len):
+#        """ Return a legal file name with 0 < length < max_len). """
+#        warnings.warn('nextFileName SYNONYM', DeprecationWarning)
+#        return self.next_file_name(max_len)
+#
+#    def nextDataFile(self, dir_name, max_len, min_len=0):
+#        """
+#        Return a data file in directory dir_name with a quasi-random name
+#        and contents.   The file is at least min_len bytes log and less than
+#        max_len bytes long.  Parameters are silently converted to reasonable
+#        values if necessary.
+#        """
+#        warnings.warn('nextDataFile SYNONYM', DeprecationWarning)
+#        return self.next_data_file(dir_name, max_len, min_len)
+#
+#    def nextDataDir(self, path_to_dir, depth, width, max_len, min_len=0):
+#        """ creates a directory tree populated with data files """
+#        warnings.warn('nextDataDir SYNONYM', DeprecationWarning)
+#        return self.next_data_dir(path_to_dir, depth, width, max_len, min_len)
+#
+#    # END SYNONYM --------------------------------------------------
 
     def random(self):
         """ Subclasses must override. """

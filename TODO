@@ -1,7 +1,8 @@
 ~/dev/py/rnglib/TODO
 
-2017-01-13
-    * DROP SYNONYMS AT v.4.0 (warnings have been added)
+2017-02-19, edited from -01-13
+    * COMMENT OUT SYNONYMS AT v1.2.0 (warnings have been added)         * DONE
+    * delete such blocks of code
 
 2016-12-29
     * need a test of next_data_dir
