@@ -13,8 +13,8 @@ import re
 import shutil
 import warnings
 
-__version__ = '1.2.1'
-__version_date__ = '2017-02-19'
+__version__ = '1.3.0'
+__version_date__ = '2017-03-30'
 
 __all__ = [ \
     # constants, so to speak
@@ -112,71 +112,6 @@ class CommonFunc(object):
     This class contains convenience functions to be added to Random.
     """
 
-#    # SYNONYM ------------------------------------------------------
-#    # These are renamed per PEP 8.
-#
-#    def nextBoolean(self):
-#        """ Return a quasi-random boolean value. """
-#        warnings.warn('nextBoolean SYNONYM', DeprecationWarning)
-#        return self.next_boolean()
-#
-#    def nextByte(self, max_=256):
-#        """ Return a quasi-random byte value between 0 and max_ inclusive. """
-#        warnings.warn('nextByte SYNONYM', DeprecationWarning)
-#        return self.next_byte(max_)
-#
-#    def nextBytes(self, bs_):
-#        """bs is a bytearray.  Fill it with random bytes."""
-#        warnings.warn('nextBytes SYNONYM', DeprecationWarning)
-#        return self.next_bytes(bs_)
-#
-#    def someBytes(self, count):
-#        """ return a bytearray of N random bytes """
-#        warnings.warn('someBytes SYNONYM', DeprecationWarning)
-#        return self.some_bytes(count)
-#
-#    def nextInt16(self, max_=65536):
-#        """ Return a quasi-random 16-bit int. """
-#        warnings.warn('nextInt16 SYNONYM', DeprecationWarning)
-#        return self.next_int16(max_)
-#
-#    def nextInt32(self, max_=(65536 * 65536)):
-#        """ Return a quasi-random 32-bit int < max_. """
-#        warnings.warn('nextInt32 SYNONYM', DeprecationWarning)
-#        return self.next_int32(max_)
-#
-#    def nextInt64(self, max_=(65536 * 65536 * 65536 * 65536)):
-#        """ Return a quasi-random 64-bit int < max_. """
-#        warnings.warn('nextInt64 SYNONYM', DeprecationWarning)
-#        return self.next_int64(max_)
-#
-#    def nextReal(self):
-#        """ Return a quasi-random floating-point number. """
-#        warnings.warn('nextReal SYNONYM', DeprecationWarning)
-#        return self.next_real()
-#
-#    def nextFileName(self, max_len):
-#        """ Return a legal file name with 0 < length < max_len). """
-#        warnings.warn('nextFileName SYNONYM', DeprecationWarning)
-#        return self.next_file_name(max_len)
-#
-#    def nextDataFile(self, dir_name, max_len, min_len=0):
-#        """
-#        Return a data file in directory dir_name with a quasi-random name
-#        and contents.   The file is at least min_len bytes log and less than
-#        max_len bytes long.  Parameters are silently converted to reasonable
-#        values if necessary.
-#        """
-#        warnings.warn('nextDataFile SYNONYM', DeprecationWarning)
-#        return self.next_data_file(dir_name, max_len, min_len)
-#
-#    def nextDataDir(self, path_to_dir, depth, width, max_len, min_len=0):
-#        """ creates a directory tree populated with data files """
-#        warnings.warn('nextDataDir SYNONYM', DeprecationWarning)
-#        return self.next_data_dir(path_to_dir, depth, width, max_len, min_len)
-#
-#    # END SYNONYM --------------------------------------------------
-
     def random(self):
         """ Subclasses must override. """
         raise NotImplementedError
@@ -200,17 +135,20 @@ class CommonFunc(object):
         for _ in range(count):
             yield random.getrandbits(8)
 
-    def next_bytes(self, bs_):
-        """bs_ is a bytearray.  Fill it with random bytes."""
-        if bs_ is not None:
-            #           for i in range(len(bs_)):
-            #               bs_[i] = self.nextByte()
-            lbs = len(bs_)
-            if lbs <= 64:
-                val = bytearray(self._rand_bytes(lbs))
+    def next_bytes(self, buf):
+        """
+        buf is a bytearray.  Fill it with random bytes.
+
+        This is the version for the Mersenne Twister.  SystemRNG and
+        SecureRNG should override.
+        """
+        if buf is not None:
+            count = len(buf)
+            if count <= 64:
+                val = bytearray(self._rand_bytes(count))
             else:
-                val = bytearray(os.urandom(lbs))
-            bs_[:] = val
+                val = bytearray(os.urandom(count))
+            buf[:] = val
 
     def some_bytes(self, count):
         """ return a bytearray of N random bytes """
@@ -239,7 +177,7 @@ class CommonFunc(object):
         return int(max_ * self.random())
 
     def next_real(self):
-        """ Return a quasi-random floating-point number. """
+        """ Return a quasi-random floating-point number in the range [0..1). """
 
         return self.random()
 
@@ -336,6 +274,7 @@ class CommonFunc(object):
                     # SPECIFICATION ERROR: file name may not be unique
                     (_, path_to_file) = self.next_data_file(
                         path_to_dir, max_len, min_len)
+                    _ = path_to_file
                 else:
                     # directory
                     subdir_so_far += 1
@@ -349,6 +288,7 @@ class CommonFunc(object):
                 # SPECIFICATION ERROR: file name may not be unique
                 (_, path_to_leaf) = self.next_data_file(
                     path_to_dir, max_len, min_len)
+                _ = path_to_leaf
 
 
 class SimpleRNG(random.Random, CommonFunc):
@@ -363,22 +303,43 @@ class SystemRNG(random.SystemRandom, CommonFunc):
     A more secure random number generator getting numbers from the
     system's /dev/urandom.  This will be slower than SimpleRNG but
     not so very slow as an RNG using /dev/random, which will block
-    untl enough entropy accumulates.
+    until enough entropy accumulates.
     """
 
     def __init__(self, salt=None):
-        super().__init__()    # in first parent, I hope
-        # self.seed(salt)
-        _ = salt
+        super().__init__()      # in first parent, I hope
+        _ = salt                # make pylint happy
 
-    def getstate(self):
+    def getstate(self, *args, **kwargs):
         """ Implements abstract function. """
         raise NotImplementedError('not implemented, stateless RNG')
 
-    def setstate(self, state):
+    def setstate(self, *args, **kwargs):
         """ Implements abstract function. """
-        _ = state
         raise NotImplementedError('not implemented, stateless RNG')
+
+    def next_byte(self, max_=256):
+        """
+        Return a quasi-random byte value between 0 and max_ - 1 inclusive.
+        """
+
+        if max_ < 1:
+            max_ = 1
+        elif max_ > 256:
+            max_ = 256
+
+        val = os.urandom(1)[0]
+        if max_ < 256:
+            val *= float(max_) / 256
+        return int(val)
+
+    def next_bytes(self, buf):
+        """
+        buf is a bytearray.  Fill it with random bytes.
+        """
+        if buf is not None:
+            count = len(buf)
+            buf[:] = bytearray(os.urandom(count))
 
 
 class SecureRandom(random.Random):
@@ -386,17 +347,36 @@ class SecureRandom(random.Random):
     Overrides Random.random(), stubs the other 5 functions.
     """
 
+    BPF = 53        # bits in a Python float
+    RECIP_BPF = 2 ** -BPF
+
     def __init__(self, salt=None):
         super().__init__()
         # self.seed(salt)
         _ = salt
 
-    def random(self):
-        # XXX STUB: MUST READ /dev/random for some number of bytes
-        pass
+    def _random(self, k):
+        """ Read /dev/random for k bytes: blocks. """
 
-    seed = _stubbed
-    jumpahead = _stubbed
+        # XXX should range check k
+        with open('/dev/random', 'rb') as file:
+            return file.read(k)
+
+    def random(self):
+        """ Return a random value in the range [0..1) """
+        # DEBUG
+        print("SecureRandom.random")
+        # END
+        return (int.from_bytes(self._random(7), 'little') >> 3) * \
+            SecureRandom.RECIP_BPF
+
+    def seed(self, *args, **kwargs):
+        """ Unused abstract method. """
+        return None
+
+    def jumpahead(self):
+        """ Unused abstract method. """
+        pass
 
     def getstate(self):
         """ Implements abstract function. """
@@ -424,3 +404,26 @@ class SecureRNG(SecureRandom, CommonFunc):
     def _notimplemented(self):
         """ Implements abstract function. """
         raise NotImplementedError()
+
+    def next_byte(self, max_=256):
+        """
+        Return a quasi-random byte value between 0 and max_ - 1 inclusive.
+        """
+
+        if max_ < 1:
+            max_ = 1
+        elif max_ > 256:
+            max_ = 256
+
+        val = self._random(1)[0]
+        if max_ < 256:
+            val *= float(max_) / 256
+        return int(val)
+
+    def next_bytes(self, buf):
+        """
+        buf is a bytearray.  Fill it with random bytes.
+        """
+        if buf is not None:
+            count = len(buf)
+            buf[:] = bytearray(self._random(count))

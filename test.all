@@ -6,8 +6,10 @@ then
   
   ./test_files.py
   ./test_random_func.py
+  echo "NOT running test_secure_rng.py"
   ./test_simple_rng.py
   ./test_system_rng.py
+  ./test_valid_file_name.py
   
 else
   echo "DEV_BASE is not defined"
