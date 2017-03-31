@@ -123,5 +123,15 @@ class TestSystemRNG(unittest.TestCase):
         self.do_next_data_dir_test(4, 1)
         self.do_next_data_dir_test(4, 4)
 
+    def test_bulk_generation(self):
+        """
+        Test generating many AES iv+keys.
+        """
+        t0 = time.time()
+        for i in range(10000):
+            junk = self.rng.some_bytes(16)
+        t1 = time.time()
+        print("time to generate 10,000 AES iv + key: %f seconds" % (t1 - t0))
+
 if __name__ == '__main__':
     unittest.main()
