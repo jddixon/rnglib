@@ -161,5 +161,6 @@ class TestSimpleRNG(unittest.TestCase):
         self.do_next_data_dir_test(4, 1)
         self.do_next_data_dir_test(4, 4)
 
+
 if __name__ == '__main__':
     unittest.main()

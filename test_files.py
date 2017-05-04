@@ -32,5 +32,6 @@ class TestDataFile(unittest.TestCase):
         self.assertEqual(leaf0, leaf0)
         self.assertFalse(leaf0.__eq__(leaf1))
 
+
 if __name__ == '__main__':
     unittest.main()
