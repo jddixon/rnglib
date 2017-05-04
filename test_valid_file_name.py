@@ -37,5 +37,6 @@ class TestValidFileName(unittest.TestCase):
         self.assertFalse(valid_file_name('1abc\t._'))   # contains a tab
         self.assertFalse(valid_file_name('QRS.T..UV_def$'))  # dollar sign
 
+
 if __name__ == '__main__':
     unittest.main()

@@ -11,10 +11,9 @@ import os
 import random
 import re
 import shutil
-import warnings
 
-__version__ = '1.3.0'
-__version_date__ = '2017-03-30'
+__version__ = '1.3.1'
+__version_date__ = '2017-05-04'
 
 __all__ = [ \
     # constants, so to speak
@@ -98,11 +97,6 @@ class DataFile(object):
         return True
 
 # -------------------------------------------------------------------
-
-
-def _stubbed():
-    """ Unimplemented function. """
-    return None
 
 
 class CommonFunc(object):

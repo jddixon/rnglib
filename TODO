@@ -1,18 +1,26 @@
 ~/dev/py/rnglib/TODO
 
+2017-03-30
+    * SecureRNG.getrandbits(self, k) needed?
+    * Document interface
+    * Add warning: SecureRNG is very slow indeed
+    * spec out further rationalization
+    * need measures of the smoothness of generated random numbers
+        - there are widely available standard tests
+
 2017-03-29
-    * test_secure_rng.py is failing
+    * test_secure_rng.py is failing                                     * FIXED
 
 2017-02-19, edited from -01-13
     * COMMENT OUT SYNONYMS AT v1.2.0 (warnings have been added)         * DONE
-    * delete such blocks of code
+    * delete such blocks of code                                        * DONE
 
 2016-12-29
     * need a test of next_data_dir
 
 2016-10-06
     * drop obsolete CommonFunc functions when step minor version 
-    * SecureRandom implementation is junk
+    * SecureRandom implementation is junk                               * FIXED
 
 2016-08-29
     * only 17% coverage on testRandomFunc.py; discard current test

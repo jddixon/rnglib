@@ -70,5 +70,6 @@ class TestRandomFunc(unittest.TestCase):
 
         self.rand_test(count=1000)
 
+
 if __name__ == '__main__':
     unittest.main()

@@ -133,5 +133,6 @@ class TestSystemRNG(unittest.TestCase):
         t1 = time.time()
         print("time to generate 10,000 AES iv + key: %f seconds" % (t1 - t0))
 
+
 if __name__ == '__main__':
     unittest.main()
