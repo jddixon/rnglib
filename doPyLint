@@ -1,2 +1,2 @@
-pylint setup.py test*.py rnglib
+pylint setup.py src/test*.py tests/rnglib
 
