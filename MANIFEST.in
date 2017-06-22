@@ -4,7 +4,7 @@ include .gitignorm
 include auto8it countem installit
 include CHANGES MANIFEST.in README.* TODO
 include *.py
-recursive-include rnglib *.py
+recursive-include src tests
 global-exclude junk* .*swp 
 prune   .svn .git
 

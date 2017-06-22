@@ -7,29 +7,29 @@ Giaje1YAJPNVBt3dlOA5lhBp4GpSYBskJ9UR2Zyt3lgAGK3dEwxYETLMh9VWEV8i
 k2lyCIE/V/CDb9eVDYQgYSJYrnQ/JAPST7NbcY8aI+/0l7QVBhLBpmOCvmS6ofvz
 /QIDAQAB
 -----END PUBLIC KEY-----
-rnglib v1.3.1
-2017-05-04 19:19:51
+rnglib v1.3.2
+2017-06-22 20:28:31
 # BEGIN CONTENT #
 rnglib
  .dvcz
-  builds 2d1ef43ec30ab404d30f3e27442627a88206774f
+  builds 1d6fe1302aeb757feede54664ef296cfc4fe48e9
   copyright 398f1ae7d41108936adf6f4f33209234106bd3ed
-  lastBuildList 154010f9aba81c542c5f20ce51c6d96af5e5c824
+  lastBuildList f5a03aa9dc889de215a9db81d7d768ef98f7d5b2
   license 5977a55c75bb4612004451a56b0b4c22d9d3311d
   projCfg 72ec98b50d4418aa60ef4160a9deb55a4acce094
   projCfg.local 3233309619f51369aec021a9dc08ea1c70dbd54e
-  version abb36f97b889b7c4777b8b7492e9aecdc33624fe
+  version 2771235bb4a58f79f142ecec2f173a3a09a66498
  .gitignore 5185a3cb0539828e50edfc25d60c80ae291197fa
- CHANGES ff73b93570bef8dc169f84ebbc9735557bb03223
+ CHANGES a488425cc97889ba3b4f684a6ffa171f25d70d66
  LICENSE-MIT.md 0d07d7f09fd91a4c193acd95e1a1afa0c8e4f286
- MANIFEST.in 812706566cd25235981a7c615bf67b0b2c4779ae
+ MANIFEST.in 8be57ea7c17b38b3bc059175ff8b25f74447b26b
  README.md bb9e72f08a7998824acf18d538df005a9d9d6184
  TODO 8ea0f3b82b018ff5690e4e64b8d4acc9ac36c8b9
  bkp2U 55ddcd4d4b246ef5fa6a6f5dece2e50aa4a0c6a1
  check.summary ba8082b4abcaeaa6d8292ff5e3edffe73b9586a5
- checkCoverage b3c6ba3dcb3548921187113452dac7b77bb3e43c
- countem c6e39ee690ca0657474bc636e934078e6ffdd32e
- doPyLint 471e1bd713d64545759cac388a1174064731ddc3
+ checkCoverage a7df01f68949a744083bc01ed2bf83ed00a003df
+ countem 109b15fe2812ed9918fcdd1d29bd578454db2103
+ doPyLint bda00ea86dcf6911efe3dfa8e3f980fc22de92d9
  ghpDoc
   TODO e6d71e578dc93b7ad1281c6149b30782dfb83ae3
   css
@@ -50,17 +50,18 @@ rnglib
  installit bd1122f5b413a7ce4ba3904dc182a08623b717b2
  name-pairs-api 7b72103d907749c31bdb73718e84609fa52ce636
  pylintrc dd234fda24a547a9071f1e4608a3c1f3b7de9aa0
- rnglib
-  __init__.py 55b3eacf61b1acd916e243547db24ab2e623a22b
- setup.py 7b42156e80417b845260c99a8f5cb6e3e397847e
- styleit c82a6e7cc1122f830994f082a916852cf3b4e7ae
- test.all f7a943e599c971ea8f4c1e67d3d4373640a242b6
- test_files.py 310c614a68a455d0d9079e2d3de30289f1bdc87d
- test_random_func.py f2ab46837eac782864f14a7ac72383589ef1ce91
- test_secure_rng.py bf61c0e59b6a64844ffca4191e35a3f4d084999b
- test_simple_rng.py 2d688c5a6332453e32a1058319db1197e48f61d6
- test_system_rng.py 0acc120595a0e47b494cb50aece0c19b8e6e24e0
- test_valid_file_name.py 7b2fa5108996f161eb3778bf69d59fb16a9818a5
+ setup.py db1b19c9ce385505e6f2d133a2ba2a2e14b0adcd
+ src
+  rnglib
+   __init__.py c3182fa5ba4b9e48adeb2efff57a525a25e8a99f
+ styleit d0d55f3475ba53c0f76ec383da5f43c2b4e5463a
+ test.all 39eba85a61a0493bd795e6bde06b953f490f8f06
+ tests
+  test_files.py 310c614a68a455d0d9079e2d3de30289f1bdc87d
+  test_random_func.py f2ab46837eac782864f14a7ac72383589ef1ce91
+  test_simple_rng.py 2d688c5a6332453e32a1058319db1197e48f61d6
+  test_system_rng.py 0acc120595a0e47b494cb50aece0c19b8e6e24e0
+  test_valid_file_name.py 7b2fa5108996f161eb3778bf69d59fb16a9818a5
 # END CONTENT #
 
-BXsaw0uGe7FL6/0T8O4N1izKk3m0VHbIUEjcHq+mJDXPMdBL8cL2CRCEIls+o/u4CrRr1I4MkYQ/Q5ZAmkvv9Oae+25r3WfjW7/ecnTH2t5NRliH7v6s7GGhhegDtmje7LiuSno7+aORPR2r1oteb0h7qgtrAer1qsgcIQ3YNKyZVvLlYDxzltS6Eu45bgrIwk0lmGfhp8UIzegdR1k3ffnvyzBDxbAEA/0bpXQiwBM2OdGDhm9MnMTuv/UxBORv1JTqZkiiOPLKJrR7gmVy1TlKO2hVg1reXN3B8X8eDaY0zbT7UhaWKtoqnJarCU3SwZ4SCx8rM0gBYeZAOkGNQg==
+Nr00EoXjWSNSRqx61CteXve5HFvf0kEAIYP6rqz57YpsSF8H/xDEwpDBkGYJr2wtSP3S/FDkE1pwCNMFfo0PN1zEqcWwz5yBCTju95PehWK8v9VgpXNWUapm3Ep2wLSv1R8qd1HSIkChRLEtkT54kvVj4KQ6qpQjJgvR3JTXOX/sqCjaHB1bKqZEB9My41n9syBVtMhAmG9VtJSzctg9szatQR/yZJCwjdq0OV32paonMAknJIA8qCrZ7ltkVEz5zujAJOxD3rDd4rOXHRsxXB4z6ThACWjBXbM9ndxoBOwEgwfuB68C/LG13EpftYrdvbF8ApXeM3X0HPASbpUQFw==

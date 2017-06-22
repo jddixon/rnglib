@@ -1,5 +1,8 @@
 ~/dev/py/rnglib/CHANGES
 
+v1.3.2
+    2017-06-22
+        * restructure for pytest                                    SLOC 1405
 v1.3.1
     2017-05-04
         * drop dist/* from repos; plus minor edits                  SLOC 1475
@@ -137,6 +140,7 @@ v0.6.1
 0.1 
     2011-07-11 
         * passes tests
+
 
 
 
