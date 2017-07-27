@@ -6,7 +6,7 @@ then
   
   rm -rf build/* tmp/* 
   
-  pySloc -L py src tests  -X cover -X htmlcov -X dist -v $@
+  pySloc -L py  -X cover -X htmlcov -X dist -v $@ src/rnglib tests/test_files.py tests/test_random_func.py tests/test_simple_rng.py tests/test_system_rng.py tests/test_valid_file_name.py setup.py
 else
   echo "DEV_BASE is not defined"
 fi

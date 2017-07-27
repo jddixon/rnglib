@@ -12,8 +12,8 @@ import random
 import re
 import shutil
 
-__version__ = '1.3.2'
-__version_date__ = '2017-06-22'
+__version__ = '1.3.3'
+__version_date__ = '2017-07-27'
 
 __all__ = [ \
     # constants, so to speak

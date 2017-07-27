@@ -3,9 +3,8 @@
 if [ ! -z "${DEV_BASE// }" ]
 then
   cd $DEV_BASE/py/rnglib
- 
-  pytest
-  echo "should NOT be running test_secure_rng.py"
+  
+  PYTHONPATH=".:src:test" pytest
   
 else
   echo "DEV_BASE is not defined"
