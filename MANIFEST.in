@@ -1,11 +1,10 @@
 # see http://docs.python.org/distutils/sourcedist.html
 
-include .gitignorm
-include auto8it countem installit
-include CHANGES MANIFEST.in README.* TODO
-include *.py
-recursive-include src tests
+include CHANGES LICENSE* MANIFEST.in README* TODO
+include bkp2U checkCoverage countem doPyLint installit pylintrc styleit test.all
+include setup.py
+recursive-include src *
+recursive-include tests *
+recursive-include ghpDoc *
 global-exclude junk* .*swp 
-prune   .svn .git
-
-
+prune   .svn
