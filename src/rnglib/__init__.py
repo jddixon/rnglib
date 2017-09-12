@@ -10,10 +10,9 @@ will be a no-op.
 import os
 import random
 import re
-import shutil
 
-__version__ = '1.3.3'
-__version_date__ = '2017-07-27'
+__version__ = '1.3.4'
+__version_date__ = '2017-09-12'
 
 __all__ = [ \
     # constants, so to speak
@@ -171,7 +170,9 @@ class CommonFunc(object):
         return int(max_ * self.random())
 
     def next_real(self):
-        """ Return a quasi-random floating-point number in the range [0..1). """
+        """
+        Return a quasi-random floating-point number in the range [0..1).
+        """
 
         return self.random()
 
@@ -210,8 +211,9 @@ class CommonFunc(object):
 
     # These are operations on the file system.  Directory depth is at least 1
     # and no more than 'depth'.  Likewise for width, the number of
-    # files in a directory, where a file is either a data file or a subdirectory.
-    # The number of bytes in a file is at least min_len and less than max_len.
+    # files in a directory, where a file is either a data file or a
+    # subdirectory. The number of bytes in a file is at least min_len and
+    # less than max_len.
     # Subdirectory names may be random
 
     def next_data_file(self, dir_name, max_len, min_len=0):
@@ -282,7 +284,7 @@ class CommonFunc(object):
                 # SPECIFICATION ERROR: file name may not be unique
                 (_, path_to_leaf) = self.next_data_file(
                     path_to_dir, max_len, min_len)
-                _ = path_to_leaf
+                path_to_leaf            # suppress warning ?
 
 
 class SimpleRNG(random.Random, CommonFunc):
@@ -302,7 +304,7 @@ class SystemRNG(random.SystemRandom, CommonFunc):
 
     def __init__(self, salt=None):
         super().__init__()      # in first parent, I hope
-        _ = salt                # make pylint happy
+        salt                    # make pylint happy
 
     def getstate(self, *args, **kwargs):
         """ Implements abstract function. """
@@ -347,7 +349,7 @@ class SecureRandom(random.Random):
     def __init__(self, salt=None):
         super().__init__()
         # self.seed(salt)
-        _ = salt
+        salt                    # to suppress complaints
 
     def _random(self, k):
         """ Read /dev/random for k bytes: blocks. """
@@ -378,7 +380,7 @@ class SecureRandom(random.Random):
 
     def setstate(self, state):
         """ Implements abstract function. """
-        _ = state
+        state           # suppress warnings
         raise NotImplementedError('not implemented, stateless RNG')
 
     def _notimplemented(self):

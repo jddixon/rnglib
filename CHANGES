@@ -1,5 +1,8 @@
 ~/dev/py/rnglib/CHANGES
 
+v1.3.4
+    2017-09-12
+        * pep8 etc; fix tox.ini                                     SLOC 1436
 v1.3.3
     2017-07-27
         * rewrite setup.py; minor edits to config files             SLOC 1410
@@ -143,6 +146,7 @@ v0.6.1
 0.1 
     2011-07-11 
         * passes tests
+
 
 
 

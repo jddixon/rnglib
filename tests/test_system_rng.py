@@ -129,7 +129,7 @@ class TestSystemRNG(unittest.TestCase):
         """
         t0 = time.time()
         for i in range(10000):
-            junk = self.rng.some_bytes(16)
+            self.rng.some_bytes(16)     # discarding outputs
         t1 = time.time()
         print("time to generate 10,000 AES iv + key: %f seconds" % (t1 - t0))
 
