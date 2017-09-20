@@ -1,0 +1,29 @@
+# projConfig.html for rnglib
+
+[meta] {version= '0.1.0'}
+
+[project]
+    name = 'rnglib'             # external name = distribution name
+    package = 'rnglib'          # internal name
+    main_lang = 'py'
+    version = '1.3.5'
+    version_date = '2017-09-20'
+    author = 'Jim Dixon'
+    author_email = 'jdd@gmail.com'
+    copyright = '2011-2017'
+    description = 'random number generator library'
+    dev_status = 4
+    license = 'mit'
+    relpath = 'py/rnglib'       # replaces projdir
+    state = 'gittified'
+    url = 'https://jddixon.github.io/rnglib'
+
+[python]
+    test_dir = 'tests'
+    packages = ['rnglib']
+    package_dir = ['src']
+    # py_modules
+    # scripts
+    # ext_modules
+
+    # trove stuff is TBD
