@@ -7,24 +7,21 @@ Giaje1YAJPNVBt3dlOA5lhBp4GpSYBskJ9UR2Zyt3lgAGK3dEwxYETLMh9VWEV8i
 k2lyCIE/V/CDb9eVDYQgYSJYrnQ/JAPST7NbcY8aI+/0l7QVBhLBpmOCvmS6ofvz
 /QIDAQAB
 -----END PUBLIC KEY-----
-rnglib v1.3.5
-2017-09-20 21:41:18
+rnglib v1.3.6
+2017-09-24 00:14:14
 # BEGIN CONTENT #
 rnglib
- .cache
-  v
-   cache
-    lastfailed bf21a9e8fbc5a3846fb05b4fa0859e0917b2202f
  .dvcz
-  builds 69dac72189212c7c28700d07cf58079a492a7b1b
+  builds b3f99b1404532b9fb48d507997d3c0b6585fcb80
   copyright 398f1ae7d41108936adf6f4f33209234106bd3ed
-  lastBuildList 17ec46472c34a0682507e61ad70ff31266517af9
+  lastBuildList e5969c37abd56e96f147547f8b9ab3b3f33fb154
   license 5977a55c75bb4612004451a56b0b4c22d9d3311d
   projCfg 7977d11330377046e2ee49e8b8e034af9b9f74d0
   projCfg.local 3233309619f51369aec021a9dc08ea1c70dbd54e
-  version cf5d971b22eecb25ee1de601a189b79359022bdc
+  projConfig.toml cd435decc6c7ccbeab96677f356ba3a1b78d6481
+  version 5cf0dd5a98c6485fa22f92573e1e24e4a8445fbe
  .gitignore c8129c7133b7a7755cefd3dfc62a9af7bc306aa0
- CHANGES 182d9b4968650ba13a823683e1062fed272ec8f3
+ CHANGES 105b0cf4a7325115333c75dfb1fd7d88f13d3ac7
  LICENSE-MIT.md 8848c7b511a1545a8519380c5b0eb9fa7bd0f6d6
  MANIFEST.in e21823fc3f88da4455792148de0afafb88c08ec5
  README.md bb9e72f08a7998824acf18d538df005a9d9d6184
@@ -52,14 +49,13 @@ rnglib
    xlattice.batik.jpg debe9220564203118dc53df0f5a48d77669fe367
   index.md 528590afaaf8e08f86b251d87d99ab988ca466ef
  installit bd1122f5b413a7ce4ba3904dc182a08623b717b2
- projConfig.toml df0804c3dd5e2929030108714424bc1d18409aa4
  pylintrc dd234fda24a547a9071f1e4608a3c1f3b7de9aa0
  requirements.txt 1bb525d21298d42820adf7cddb5ba6649cfdd5e7
  setup.cfg f7c26178950ff87856972738d278b16b4dbdaddc
- setup.py db1b19c9ce385505e6f2d133a2ba2a2e14b0adcd
+ setup.py de6b41a0a8c81d0a8f1924c4104eee285484549b
  src
   rnglib
-   __init__.py 4c705c1382cc2edf8f8b59e26c975d787ec49f6a
+   __init__.py 519716e6f80642177bb3e4f527689a533cd454b3
  styleit 435f6e6adbf1a9a96009248a4f4cd9ae33167c83
  test.all 26d5b9fde65fb54e775c1c596c0c7b3bb5ce85c7
  test_requirements.txt 65bfd392b6dff363ef9fff17fdb4008a52a0acb4
@@ -72,4 +68,4 @@ rnglib
  tox.ini f225b6013ce50ed4eb28a996f3febc91da4e00ba
 # END CONTENT #
 
-KEkK1wW7PnzNkxdedbu5uXxQAWOUJcjgHG8QIQEWF9Cm+kquJTkClumoKDwgHWDg/mYF8f9CPSrvhWjoHRRn6AUZpfqQBr6Ud5+Hib/6qCZvoEM8vkbPvWnz/bJWoiU+UrAjay//VIX5mb9sPwCQ6nsdESISeSWidR+Li9LD/KjgGifLCZTenOF5Gh6mJ1sleajaJB9RlTS5OuPKfIvULFCZ3U1wpGcS9qOxQTUYRBB+yB897+aGI1waC4Q10EC+lj1SVpVLMlD1WOF7qHJPgo2QopTLVHeP6Jf5xQ17/dibdCrxsO1kRsNJ556dT3FH9IkvD/WVxyEED0FG+UYXXg==
+d3ZL40xYqHecdwVbunuDsJmefB+hgAK03g6PNobDEeQXDYclwRABHfdxgR4XaVj9QAxv/pm2G+uz2roJc/QpzqZYK1R1f3iy4EulqryUtlvzpK/yazqw0BgVMdGkVFon/KcgMSevIPMlL2E32UBh/Z1lc9xFs/dJvI5+Rzzt45EM3nR7UHJIRrRnWZsdAetzN64/veYD2DS/Dy95cUyEzjFkAdLO0CHc7NxASakmcnFZfCSak0hKvRephB9JlbLjeJsuKHLHgOYpNeq5jZ6Y6bYgAOfd7+187nbZrkZ6HwtICuBXy8S03v6+pAyS4lTTaQbI02tkyMhcGn/lg0YaIw==
