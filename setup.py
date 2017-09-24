@@ -3,20 +3,24 @@
 
 """ Set up distutils for rnglib. """
 
-import re
-from distutils.core import setup
-__version__ = re.search(r"__version__\s*=\s*'(.*)'",
-                        open('src/rnglib/__init__.py').read()).group(1)
+from os.path import exists
+from setuptools import setup
 
-# see http://docs.python.org/distutils/setupscript.html
+long_desc = None
+if exists('README.md'):
+    with open('README.md', 'r') as file:
+        long_desc = file.read()
 
 setup(name='rnglib',
-      version=__version__,
+      version='1.3.6',
       author='Jim Dixon',
       author_email='jddixon@gmail.com',
+      long_description=long_desc,
+      packages=['rnglib', ],
+      package_dir={'': 'src'},
       py_modules=[],
-      packages=['src/rnglib', ],
-      # following could be in scripts/ subdir
+      include_package_data=False,
+      zip_safe=False,
       scripts=[],          # front end module(s)
       description='random number geerator library',
       url='https:/jddixon.github.io/rnglib',
@@ -25,6 +29,11 @@ setup(name='rnglib',
           'Intended Audience :: Developers',
           'License :: OSI Approved :: MIT License',
           'Natural Language :: English',
-          'Programming Language :: Python 3',
+          'Programming Language :: Python 2.7',
+          'Programming Language :: Python 3.3',
+          'Programming Language :: Python 3.4',
+          'Programming Language :: Python 3.5',
+          'Programming Language :: Python 3.6',
+          'Programming Language :: Python 3.7',
           'Topic :: Software Development :: Libraries :: Python Modules',
       ])

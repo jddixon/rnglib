@@ -1,5 +1,8 @@
 ~/dev/py/rnglib/CHANGES
 
+v1.3.6
+    2017-09-23
+        * corrections to setup.py, move projConfig.toml             SLOC 1485
 v1.3.5
     2017-09-20
         * add projConfig.toml                                       SLOC 1465
@@ -149,6 +152,7 @@ v0.6.1
 0.1 
     2011-07-11 
         * passes tests
+
 
 
 
