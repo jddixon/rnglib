@@ -1,35 +1,29 @@
-# projConfig.toml for rnglib
-
 [meta]
-    version= '0.1.0'
+version = "0.1.0"
 
 [project]
-    name = 'rnglib'             # external name = distribution name
-    package = 'rnglib'          # internal name
-    main_lang = 'py'
-    version = '1.3.6'
-    version_date = '2017-09-23'
-    author = 'Jim Dixon'
-    author_email = 'jdd@gmail.com'
-    copyright = '2011-2017'
-    description = 'random number generator library'
-    dev_status = 'beta'
-    license = 'mit'
-    relpath = 'py/rnglib'
-    state = 'shared'
-    url = 'https://jddixon.github.io/rnglib'
+name = "rnglib"
+package = "rnglib"
+main_lang = "py"
+version = "1.3.7"
+version_date = "2017-11-28"
+author = "Jim Dixon"
+author_email = "jdd@gmail.com"
+copyright = "2011-2017"
+description = "random number generator library"
+dev_status = "beta"
+license = "mit"
+relpath = "py/rnglib"
+state = "shared"
+url = "https://jddixon.github.io/rnglib"
 
 [python]
-    packages = ['rnglib']
-    package_dir = ['src']
-    test_dir = 'tests'
-    py_modules = []
-    scripts = []
-    ext_modules = []
-
-    # sdReq output
-    distshare = []
-    requirements = []
-    test_requirements = []
-
-    # trove stuff is TBD
+packages = [ "rnglib",]
+package_dir = [ "src",]
+test_dir = "tests"
+py_modules = []
+scripts = []
+ext_modules = []
+distshare = []
+requirements = []
+test_requirements = []

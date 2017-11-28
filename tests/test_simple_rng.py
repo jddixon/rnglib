@@ -34,7 +34,7 @@ class TestSimpleRNG(unittest.TestCase):
         self.assertEqual(count, len(data))
         return data
 
-#   # XXX NOT CURRENTLY USED
+#   # NOT CURRENTLY USED
 #   def set_a_bit(self, vector, value):
 #       """ treat a 32 byte vector as a bit vector of 256 bits """
 #       byte = int(value / 8)
@@ -42,7 +42,7 @@ class TestSimpleRNG(unittest.TestCase):
 #       vector[byte] |= 1 << bit
 #       return vector
 
-#   # XXX NOT CURRENTLY USED
+#   # NOT CURRENTLY USED
 #   def non_zero_bits(self, vector):
 #       pass
 
