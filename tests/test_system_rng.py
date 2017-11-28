@@ -32,7 +32,7 @@ class TestSystemRNG(unittest.TestCase):
         self.assertEqual(count, len(data))
         return data
 
-#   # XXX NOT CURRENTLY USED
+#   # NOT CURRENTLY USED
 #   def set_a_bit(self, vector, value):
 #       """ treat a 32 byte vector as a bit vector of 256 bits """
 #       byte = int(value / 8)
@@ -40,7 +40,7 @@ class TestSystemRNG(unittest.TestCase):
 #       vector[byte] |= 1 << bit
 #       return vector
 
-#   # XXX NOT CURRENTLY USED
+#   # NOT CURRENTLY USED
 #   def non_zero_bits(self, vector):
 #       pass
 
@@ -127,11 +127,12 @@ class TestSystemRNG(unittest.TestCase):
         """
         Test generating many AES iv+keys.
         """
-        t0 = time.time()
-        for i in range(10000):
+        t_start = time.time()
+        for _ in range(10000):
             self.rng.some_bytes(16)     # discarding outputs
-        t1 = time.time()
-        print("time to generate 10,000 AES iv + key: %f seconds" % (t1 - t0))
+        t_end = time.time()
+        print("time to generate 10,000 AES iv + key: %f seconds" %
+              (t_end - t_start))
 
 
 if __name__ == '__main__':

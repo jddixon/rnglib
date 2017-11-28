@@ -11,8 +11,8 @@ import os
 import random
 import re
 
-__version__ = '1.3.6'
-__version_date__ = '2017-09-23'
+__version__ = '1.3.7'
+__version_date__ = '2017-11-28'
 
 __all__ = [ \
     # constants, so to speak
@@ -53,16 +53,13 @@ def valid_file_name(name):
     return match is not None
 
 # -------------------------------------------------------------------
-# XXX USED ONLY IN TESTING XXX
 
 
 class DataFile(object):
-    """ this appears to be a stub """
+    """ This appears to be a stub USED ONLY IN TESTING """
 
     def __init__(self, name, parent=None):
-        # XXX integrity checks
         self._name = name
-        # XXX integrity checks
         self._parent = parent
 
     @property
@@ -74,9 +71,10 @@ class DataFile(object):
     def path(self):
         """ Return a relative or absolute path to the data file. """
         if self._parent:
-            return os.path.join(self._parent.path, self._name)
+            pth = os.path.join(self._parent.path, self._name)
         else:
-            return self._name
+            pth = self._name
+        return pth
 
     @property
     def parent(self):
@@ -92,8 +90,7 @@ class DataFile(object):
             return False
         if self.parent and self.parent != other.parent:
             return False
-        # XXX STUB - no content??
-        return True
+        return self._parent == other.parent
 
 # -------------------------------------------------------------------
 
@@ -125,6 +122,7 @@ class CommonFunc(object):
         return int(max_ * self.random())
 
     def _rand_bytes(self, count):
+        _ = self
         for _ in range(count):
             yield random.getrandbits(8)
 
@@ -205,7 +203,7 @@ class CommonFunc(object):
             name_len = self.next_byte(max_len)     # so len < 256
         while True:
             name = self._next_file_name(name_len)
-            if (len(name) > 0) and (name.find("..") == -1):
+            if name and (name.find("..") == -1):
                 break
         return name
 
@@ -237,7 +235,6 @@ class CommonFunc(object):
         count = min_len + int(self.random() * (max_len - min_len))
         data = self.some_bytes(count)
 
-        # XXX NEEDS try BLOCK
         with open(path_to_file, "wb") as file:
             file.write(data)
             # could check file size with file.tell()
@@ -258,7 +255,6 @@ class CommonFunc(object):
         if width < 1:
             width = 1
         if not os.path.exists(path_to_dir):
-            # XXX SHOULDTRY
             os.makedirs(path_to_dir)
         subdir_so_far = 0
         for i in range(width):
@@ -284,7 +280,7 @@ class CommonFunc(object):
                 # SPECIFICATION ERROR: file name may not be unique
                 (_, path_to_leaf) = self.next_data_file(
                     path_to_dir, max_len, min_len)
-                path_to_leaf            # suppress warning ?
+                _ = path_to_leaf            # suppress warning ?
 
 
 class SimpleRNG(random.Random, CommonFunc):
@@ -303,14 +299,14 @@ class SystemRNG(random.SystemRandom, CommonFunc):
     """
 
     def __init__(self, salt=None):
-        super().__init__()      # in first parent, I hope
-        salt                    # make pylint happy
+        super().__init__()      # "useless super delegation" ?
+        _ = salt                # make pylint happy
 
-    def getstate(self, *args, **kwargs):
+    def getstate(self):
         """ Implements abstract function. """
         raise NotImplementedError('not implemented, stateless RNG')
 
-    def setstate(self, *args, **kwargs):
+    def setstate(self, state):
         """ Implements abstract function. """
         raise NotImplementedError('not implemented, stateless RNG')
 
@@ -347,14 +343,13 @@ class SecureRandom(random.Random):
     RECIP_BPF = 2 ** -BPF
 
     def __init__(self, salt=None):
-        super().__init__()
-        # self.seed(salt)
-        salt                    # to suppress complaints
+        super().__init__()          # useless super delegation ?
+        _ = salt                    # to suppress pylint complaints
 
     def _random(self, k):
         """ Read /dev/random for k bytes: blocks. """
 
-        # XXX should range check k
+        assert k >= 0
         with open('/dev/random', 'rb') as file:
             return file.read(k)
 
@@ -366,9 +361,13 @@ class SecureRandom(random.Random):
         return (int.from_bytes(self._random(7), 'little') >> 3) * \
             SecureRandom.RECIP_BPF
 
-    def seed(self, *args, **kwargs):
+    # def seed(self):     # a=None, version=2):
+    @staticmethod
+    def seed(a=None, version=2):
         """ Unused abstract method. """
-        return None
+        # _,_ = a, version
+        raise NotImplementedError('not implemented, stateless RNG')
+        # return
 
     def jumpahead(self):
         """ Unused abstract method. """
@@ -380,7 +379,7 @@ class SecureRandom(random.Random):
 
     def setstate(self, state):
         """ Implements abstract function. """
-        state           # suppress warnings
+        _ = state           # suppress warnings
         raise NotImplementedError('not implemented, stateless RNG')
 
     def _notimplemented(self):

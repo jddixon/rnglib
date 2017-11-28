@@ -1,5 +1,8 @@
 ~/dev/py/rnglib/CHANGES
 
+v1.3.7
+    2017-11-28
+        * pep8; made config files consistent                        SLOC 1485
 v1.3.6
     2017-09-23
         * corrections to setup.py, move projConfig.toml             SLOC 1485
@@ -152,6 +155,7 @@ v0.6.1
 0.1 
     2011-07-11 
         * passes tests
+
 
 
 
