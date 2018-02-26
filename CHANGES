@@ -1,5 +1,8 @@
 ~/dev/py/rnglib/CHANGES
 
+v1.3.8
+    2018-02-26
+        * correct config files                                      SLOC 1478
 v1.3.7
     2017-11-28
         * pep8; made config files consistent                        SLOC 1485
@@ -155,6 +158,7 @@ v0.6.1
 0.1 
     2011-07-11 
         * passes tests
+
 
 
 
