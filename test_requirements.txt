@@ -1,3 +1,1 @@
-# test_requirements.txt
-#shutil
-#unittest
+# rnglib/test_requirements.txt

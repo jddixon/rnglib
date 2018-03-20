@@ -7,18 +7,18 @@ Giaje1YAJPNVBt3dlOA5lhBp4GpSYBskJ9UR2Zyt3lgAGK3dEwxYETLMh9VWEV8i
 k2lyCIE/V/CDb9eVDYQgYSJYrnQ/JAPST7NbcY8aI+/0l7QVBhLBpmOCvmS6ofvz
 /QIDAQAB
 -----END PUBLIC KEY-----
-rnglib
-2018-02-26 17:19:59
+rnglib v1.3.9
+2018-03-20 19:05:37
 # BEGIN CONTENT #
 rnglib
  .dvcz
-  builds c42014230d5df776eb6f1bd746e5651bc66bd31e
-  lastBuildList 3dea2766045bd1875335c131ecec62d3c96ee8f6
+  builds a692d8b0895a7cf76322ace257caf126fef82491
+  lastBuildList b20e89870ff95b31fa7987f8ca9d4890d3305cee
   projCfg 7977d11330377046e2ee49e8b8e034af9b9f74d0
   projCfg.local 3233309619f51369aec021a9dc08ea1c70dbd54e
-  projConfig.toml 14ecea28a5366a465bf2a793ecc8684e8f104835
+  projConfig.toml 2777a87b24285f9e3e73bc372ecb9f68aa833d2b
  .gitignore c8129c7133b7a7755cefd3dfc62a9af7bc306aa0
- CHANGES 5eceaccb7d137723e3608e160ba0d3f20527f1cc
+ CHANGES a3ca9d84e1a1d8a146f2723c05eac50e99fde29b
  LICENSE-MIT.md 8848c7b511a1545a8519380c5b0eb9fa7bd0f6d6
  MANIFEST.in e21823fc3f88da4455792148de0afafb88c08ec5
  README.md bb9e72f08a7998824acf18d538df005a9d9d6184
@@ -49,20 +49,20 @@ rnglib
  pylintrc dd234fda24a547a9071f1e4608a3c1f3b7de9aa0
  requirements.txt 325d84cb520d713855970da941df81670222d01c
  setup.cfg f7c26178950ff87856972738d278b16b4dbdaddc
- setup.py 43ca52c69d11b4306a4bd5387b1fa6e0ea1ced98
+ setup.py d6ede91e5d06510229f9118cd9116c9a18b8ad59
  src
   rnglib
-   __init__.py 16e15a056d3652714866af81d4eff400448cdcd3
+   __init__.py ce53736d56fffa503bfe7d9407a7159f3d868b7d
  styleit 435f6e6adbf1a9a96009248a4f4cd9ae33167c83
  test.all d15754e3041f03c6358e4be8ac002b44272233f8
- test_requirements.txt 65bfd392b6dff363ef9fff17fdb4008a52a0acb4
+ test_requirements.txt 4a72cdf62afd06dcbcd45ba6bb45f559d7e21894
  tests
   test_files.py 310c614a68a455d0d9079e2d3de30289f1bdc87d
   test_random_func.py f2ab46837eac782864f14a7ac72383589ef1ce91
   test_simple_rng.py df97d7500d36e62820da9ec82bd65bd2eda1eae3
   test_system_rng.py 752438fb797ec35afe7646853d56204bdb8c0d54
   test_valid_file_name.py 7b2fa5108996f161eb3778bf69d59fb16a9818a5
- tox.ini 41a59534f8d9b2db3dd024698e54be51cc07f2ff
+ tox.ini 0955ddfb62ccf2fd637924fa548aa9c16670b994
 # END CONTENT #
 
-j1yc2Hvn35Ee3Q+h4Wicfasdm/53uE4JGGg7Jkdxhh1joA1ETpBwlx8h0HXMoxmogv3sAdP+J3BD9s1+7vZjbq9fYaJLoWuhzPSa9uQEneacC+Lk5Lo2pqobVGYqe1i449txwlRSTwIyxAbMhgXKz8U9JfV6EINKXjzOfTMFpQqznaolF0CHm7UJULDx58dnC/dMsYV4u+AtG9zyH6MyII96Xm2VZM2d2OC5TH3Gp2hswZse6IpRJKOFfRhRSoYaGN8ucMJdmDxwDr3UAc3a9+9X0C//Z6lbZtce8EVRLijXU0ZY42gDzD8U/FiZSnyI3MFTyj58Grau8IUyGOvYWA==
+XdNboWDgL6hgk3OJZ/6QU/JAwXjWoDfV50IM+tK2tQF7xup+hcA975ONnbEAGWwZQ9i40rB4/UY8Y/UFcYTB6tkH+PypClWiavU9X3FXzPpjhC3UcGHEN4zCvGLSR1SnYn8gx3taziAWsfgXFJt9/fnjoWHMZVKkYqKJ/Oe1U8J+E/014iOjPSnLI8cIZIDPTZml45U3iqmRLjIgRjuQAzg84xr4tIhH/BLBIkd70qmbdFV2vbyak7KX8P5nVi010DwX0xQ749d23J0JHnD+LrGC1cWu3JE0GE8Omlm8n+zJJO5XmHYMGmWUM/Cy4qpKkvE7OLM2JHnLT6AwxdnRtQ==
