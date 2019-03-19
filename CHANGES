@@ -1,5 +1,8 @@
 ~/dev/py/rnglib/CHANGES
 
+v1.3.10
+    2019-03-19
+        * cosmetic changes
 v1.3.9
     2018-03-20
         * fix corrupt .dvcz/builds                                  SLOC 1483
@@ -161,6 +164,7 @@ v0.6.1
 0.1 
     2011-07-11 
         * passes tests
+
 
 
 

@@ -12,7 +12,7 @@ if exists('README.md'):
         long_desc = file.read()
 
 setup(name='rnglib',
-      version='1.3.9',
+      version='1.3.10',
       author='Jim Dixon',
       author_email='jddixon@gmail.com',
       long_description=long_desc,
@@ -36,6 +36,5 @@ setup(name='rnglib',
           'Programming Language :: Python 3',
           'Programming Language :: Python 3.5',
           'Programming Language :: Python 3.6',
-          'Programming Language :: Python 3.7',
           'Topic :: Software Development :: Libraries :: Python Modules',
       ],)
